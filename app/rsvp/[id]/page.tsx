@@ -58,16 +58,12 @@ export default function Page({params} : {params : any}) {
                     <div className="attending-guests">
                     {
                         guests.map((guest : any)=>(
-                            <div>
-                                <form>
                                     <Confirmation 
                                     key={guest.id}
                                     guestData={guest}
                                     onToggleConfirmed={handleCheckedGuest}
                                     onEmailChange={handleChangeEmail}
                                     />
-                                </form>
-                            </div>
                         ))
                     }
                     </div>
