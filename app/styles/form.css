@@ -1,0 +1,109 @@
+
+
+.cardContainer{
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+    max-width: 550px;
+    padding: 50px;
+    position: relative;
+    margin: 0px 12px;
+    width: calc(-24px + 100vw);
+}
+
+.inputText:focus~.formTextLabel, .inputTextEntered~.formTextLabel {
+    font-size: 12px;
+    line-height: 1.33337;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    top: .58824rem;
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.user-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px
+}
+
+.inputText {
+    appearance: none;
+    border: 1px solid rgb(var(--secondary-rgb));
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    height: 3.2941176471rem;
+    letter-spacing: -.022em;
+    line-height: 1.2353641176;
+    margin-bottom: .8235294118rem;
+    padding: 1.0588235294rem .9411764706rem 0;
+    text-align: start;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+  
+  .formText{
+    position: relative;
+  }
+
+  .rsvpContainer{
+    align-items: start;
+    display: flex;
+    font-family: sans-serif;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 60px 0px;
+    position: relative;
+    width: 100vw;
+  }
+  
+  .formTextLabel {
+    font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    inset-inline-start: 1rem;
+    letter-spacing: -.022em;
+    line-height: 1.2353641176;
+    max-width: calc(100% - 32px);
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 1.0588235294rem;
+    transition-duration: .125s;
+    transition-timing-function: ease-in;
+    white-space: nowrap;
+  }
+
+  .formBody{
+    max-width: 900px;
+  }
+
+  .submitButton{
+    background-color: rgb(var(--primary-accent-rgb));
+    color: rgb(var(--secondary-rgb));
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .attending-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.attending-guests{
+    padding: 10px 0px;
+}
