@@ -2,10 +2,10 @@
 import '@/app/styles/form.css';
 import Confirmation from '@/app/rsvp/[id]/confirmation';
 import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
-import { useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 export default function Page({params} : {params : any}) {
-    const[guests , setGuests] = useState<any>([]) ?? [];
+    const[guests , setGuests] = useState<any[]>([]) ?? [];
 
     const router = useRouter();
 
@@ -17,7 +17,7 @@ export default function Page({params} : {params : any}) {
             const partyName = refUser.party;
 
             //get party members
-            const partyGuests = await getDataByParty(partyName);
+            const partyGuests= await getDataByParty(partyName);
             setGuests(partyGuests);
         }
 
