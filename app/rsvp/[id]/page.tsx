@@ -4,8 +4,11 @@ import Confirmation from './confirmation';
 import { getData, getDataByParty, saveData } from './actions';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 export default function Page({params} : {params : any}) {
     const[guests , setGuests] = useState<any>([]);
+
+    const router = useRouter();
 
     useEffect(()=>{
         const setupData = async ()=>{
@@ -45,6 +48,7 @@ export default function Page({params} : {params : any}) {
                 await saveData(guest);
             }
             alert('RSVPs saved successfully!');
+            router.push('/')
         } catch (error) {
             console.error('Error saving RSVPs:', error);
             alert('There was an error saving the RSVPs. Please try again.');

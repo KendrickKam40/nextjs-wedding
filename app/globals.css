@@ -91,7 +91,7 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
   color: rgb(var(--primary-accent-rgb));
 }
 /* Card Display */
-.card-set {
+/* .card-set {
   display: flex;
   flex-direction: row;
   gap: 1em;
@@ -99,6 +99,19 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
   width: 100%;
   margin: 0;
   list-style: none;
+} */
+
+.card-set {
+  display: grid;
+  gap: 1rem;
+  width: -moz-fit-content;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .card-set { grid-template-columns: repeat(4, auto); }
 }
 
 @media (max-width: 600px) {

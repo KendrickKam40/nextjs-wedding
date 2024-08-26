@@ -15,7 +15,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: 400,
+    width: '80%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -90,7 +91,7 @@ export function DisplayTile({
                             <div className='modal-content'>
                                 <h1 className='typography-card-headline'>Instructions to upload photos</h1>
                                 <p className='typography-family-paragraph'>1. Download the <a className="typography-text-link" href='https://dotstheapp.com/us/' target='_blank'>Dots App</a></p>
-                                <p className='typography-family-paragraph'>2. Scan this QR Code</p>
+                                <p className='typography-family-paragraph'>2. Scan this QR Code OR copy this code <b>1JLb47lc</b></p>
                             </div>
                             <img src='IMG_5458.JPG'/>
                         </Box>
