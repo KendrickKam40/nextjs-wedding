@@ -89,14 +89,6 @@ h1{
     max-width: 900px;
   }
 
-  .submitButton{
-    background-color: rgb(var(--primary-accent-rgb));
-    color: rgb(var(--secondary-rgb));
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
   .attending-row {
     display: flex;
     justify-content: space-between;

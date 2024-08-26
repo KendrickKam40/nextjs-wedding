@@ -1,0 +1,92 @@
+
+.display-tile{
+    transition: transform .3s cubic-bezier(0,0,0.5,1);
+    position: relative;
+  }
+  
+  .card-container, .card{
+    height: 100%;
+  }
+  
+  .card .card-padding.card-modifier{
+    padding-inline-end: 77px;
+    padding-bottom: 57px;
+    background-color: #fff;
+    height: 100%;
+    width: auto;
+  }
+  
+  .card .card-modifier {
+    width: 405px;
+    padding: 32px;
+  }
+
+  .display-tile:hover {
+    transform: scale(1.0161290323);
+}
+  
+  .card-modifier{
+    min-height: 217px;
+  }
+  
+  .card .card-modifier{
+    border-radius: 28px;
+    box-sizing: border-box;
+    clip-path: inset(1px 1px 1px 1px round 28px);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    will-change: transform;
+  }
+  
+  a.icon {
+    text-decoration: none;
+  }
+  
+  .card-cta-modal-button{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    border-radius: 28px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  
+.card-content .icon-container {
+    padding-bottom: 9px;
+}
+
+.card-cta-modal-button .card-cta-modal-button-icon {
+    --scrim-background-color: rgb(51, 51, 54);
+    --scrim-hover-background-color: #37373a;
+    --scrim-active-background-color: #2f2f32;
+    --icon-color: #d6d6d7;
+    --icon-interaction-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    outline: none;
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    bottom: 20px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 100ms linear, color 100ms linear;
+    background-color: var(--scrim-background-color);
+    color: var(--icon-color);
+}
+
+/* modal */
+.modal-content{
+    margin-bottom: 1em;
+}
