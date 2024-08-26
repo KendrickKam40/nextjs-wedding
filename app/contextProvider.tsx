@@ -2,7 +2,7 @@
 
 import {UserContext} from '@/app/lib/UserContext';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
 
@@ -12,7 +12,7 @@ export default function UserProvider({
 }: {
   children: React.ReactNode
 }) {
-    const [user, setUser] = useState<any>();
+    const [user, setUser] = useContext<any>(UserContext);
     const router = useRouter();
 
     useEffect(() => {

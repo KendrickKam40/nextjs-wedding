@@ -19,7 +19,7 @@ import { getDataByEmail } from "./actions";
 
 
 export default function Home() {
-  const [user, setUser] = useContext(UserContext) ?? [];
+  const [user, setUser] = useContext<any>(UserContext);
   const [userId,setUserId] = useState<any>("");
 
   useEffect(()=>{

@@ -8,7 +8,7 @@ import { UserContext } from "@/app/lib/UserContext";
 import { getDataByEmail } from "./actions";
 
 export default function Page() {
-    const [user, setUser] = useContext(UserContext) ?? [];
+    const [user, setUser] = useContext<any>(UserContext);
 
     const [email, setEmail] = useState("");
 
