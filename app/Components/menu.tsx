@@ -37,10 +37,12 @@ export default function MenuBar(){
 
     const logout = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
-        magic?.user.logout().then(() => {
-            setUser({ user: null });
-            router.push('/rsvp');
-        });
+        if(magic){
+            magic.user.logout().then(() => {
+                setUser({ user: null });
+                router.push('/rsvp');
+            });
+        }
     };
 
     // menu methods & vars
