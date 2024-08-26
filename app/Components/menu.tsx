@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function MenuBar(){
-    const [user, setUser] = useContext(UserContext) ?? [];
+    const [user, setUser] = useContext<any>(UserContext);
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
 
