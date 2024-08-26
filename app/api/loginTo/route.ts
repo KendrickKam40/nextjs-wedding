@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
 
     
     return NextResponse.json({ authenticated: true }, { status: 200 });
-  } catch (error) {
+  } catch (error : any) {
     console.log(error.message)
     return NextResponse.json({ error: error.message }, { status: 500 });
 

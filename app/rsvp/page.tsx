@@ -27,29 +27,34 @@ export default function Page() {
                
         if(foundEmail){
             try {
-                const didToken = await magic.auth.loginWithEmailOTP({
-                  email
-                });
-          
-                const res = await fetch("/api/loginTo", {
-                  method: "POST",
-                  headers: {
-                    "Content-type": "application/json",
-                    Authorization: `Bearer ${didToken}`,
-                  },
-                });
-                
-                const reponseJson = await res.json()
-                console.log(reponseJson)
-
-                if (res.ok) {
-                  const userMetadata = await magic?.user.getMetadata();
-                  setUser(userMetadata);
-                  router.push("/");
-                }
-              } catch (error) {
+                if(magic){
+                    const didToken = await magic.auth.loginWithEmailOTP({
+                        email
+                    });
+                    const res = await fetch("/api/loginTo", {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: `Bearer ${didToken}`,
+                    },
+                    });
+                    
+                    const reponseJson = await res.json()
+                    console.log(reponseJson)
+    
+                    if (res.ok) {
+                    const userMetadata = await magic?.user.getMetadata();
+                    setUser(userMetadata);
+                    router.push("/");
+                    }
+              
+                }  
+            } catch (error) {
                 console.error(error);
-              }
+            }
+              
+          
+              
         }else{
             console.error("email not found")
         }

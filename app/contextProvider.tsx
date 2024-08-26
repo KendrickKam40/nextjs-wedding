@@ -17,15 +17,18 @@ export default function UserProvider({
 
     useEffect(() => {
         setUser({ loading: true });
-        magic?.user.isLoggedIn().then((isLoggedIn : any) => {
-        if (isLoggedIn) {
-            magic?.user.getMetadata().then((userData : any) => setUser(userData));
-            router.push("/");
-        } else {
-            router.push("/rsvp");
-            setUser({ user: null });
+        if(magic){
+          magic?.user.isLoggedIn().then((isLoggedIn : any) => {
+            if (isLoggedIn && magic) {
+                magic.user.getMetadata().then((userData : any) => setUser(userData));
+                router.push("/");
+            } else {
+                router.push("/rsvp");
+                setUser({ user: null });
+            }
+            });
         }
-        });
+       
     }, []);
   return <UserContext.Provider value={[user, setUser] as any}>
     {children}
