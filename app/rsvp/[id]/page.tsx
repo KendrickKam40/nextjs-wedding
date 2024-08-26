@@ -5,7 +5,7 @@ import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 export default function Page({params} : {params : any}) {
-    const[guests , setGuests] = useState<any>([]) ?? [];
+    const[guests , setGuests] = useState([]) ?? [];
 
     const router = useRouter();
 
