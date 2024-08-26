@@ -1,12 +1,11 @@
 'use client'
 import '@/app/styles/form.css';
-import Confirmation from './confirmation';
-import { getData, getDataByParty, saveData } from './actions';
+import Confirmation from '@/app/rsvp/[id]/confirmation';
+import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
 import { useEffect, useState } from 'react';
-import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 export default function Page({params} : {params : any}) {
-    const[guests , setGuests] = useState<any>([]);
+    const[guests , setGuests] = useState<any>([]) ?? [];
 
     const router = useRouter();
 
