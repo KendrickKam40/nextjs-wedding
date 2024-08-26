@@ -1,0 +1,96 @@
+.banner-card {
+    --copy-column-v-padding: 56px;
+    --copy-max-width: 100%;
+    box-sizing: border-box;
+    background: #FFF;
+    color: #FFF;
+    border-radius: 28px;
+    clip-path: inset(1px 1px 1px 1px round 28px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    transition: transform .3s cubic-bezier(0,0,0.5,1);
+    /* Additional styling */
+    align-items: center;
+    min-height: 0;
+    max-height: none;
+    height: var(--height)
+}
+
+h1{
+    margin-top: 0px;
+}
+
+@media only screen and (min-width: 1069px) and (min-width: 1441px) {
+    .banner-card{
+        --height: 580px;
+    }
+}
+
+@media only screen and (max-width: 734px) {
+    .banner-card {
+        --min-height: 480px;
+        --max-height: 560px;
+    }
+}
+
+.banner-card{
+    --min-height: 580px;
+    --max-height: 680px;
+    --min-width: 0px;
+    display: flex;
+    min-height: var(--min-height);
+    max-height: var(--max-height);
+    min-width: var(--min-width);
+}
+
+
+
+.banner-card-row{
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+.row{
+    display: flex;
+    width: 100%;
+}
+
+.banner-card .banner-card-row {
+    --h-padding: 32px;
+    --copy-column-v-margin: 328px;
+}
+
+.banner-card .banner-card-copy-column{
+    z-index: 1;
+}
+
+/* Image */
+
+.banner-card .banner-card-image-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-card .banner-card-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+@media only screen and (min-width: 1069px) {
+    .banner-card-image img {
+        object-position: center center;
+    }
+}
+.banner-card .banner-card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}

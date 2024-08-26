@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+.style-script-regular {
+  font-family: "Style Script", cursive;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -10,6 +15,10 @@
   --secondary-accent-rgb: 147, 225, 216;
 }
 
+.main-container{
+  padding: 24px;
+}
+
 
 
 body {
@@ -17,6 +26,111 @@ body {
   background: rgb(var(--background-rgb));
 }
 
+.body-container{
+  width: 100%;
+}
+
 span{
   color: rgb(var(--secondary-rgb));
+}
+
+section{
+  position: relative;
+  margin: 1em 0em;
+}
+
+/* Typography Classes */
+.typography-section-headline {
+  font-size: 80px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+@media (max-width: 600px) {
+  .typography-section-headline {
+    font-size: 60px;
+  }
+}
+
+.typography-card-headline{
+  font-size: 28px;
+  line-height: 1.1428571429;
+  font-weight: 600;
+  letter-spacing: .007em;
+}
+
+.typography-section-eyebrow {
+  font-size: 24px;
+  line-height: 1.1666666667;
+  font-weight: 700;
+  letter-spacing: .009em;
+}
+
+.typography-family-paragraph {
+  font-size: 17px;
+  line-height: 1.2353641176;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.typography-family-subtext{
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.022em;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
+  margin-top: 0.8em;
+}
+
+.typography-text-link{
+  color: rgb(var(--primary-accent-rgb));
+}
+/* Card Display */
+.card-set {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: -moz-fit-content;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+}
+
+@media (max-width: 600px) {
+  .card-set { 
+    flex-direction: column;
+  }
+}
+
+.scroll-container {
+  position: relative;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0;
+  margin: -10px 0;
+}
+/* Submit Button */
+.submitButton{
+  background-color: rgb(var(--primary-accent-rgb));
+  color: rgb(var(--secondary-rgb));
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.submitButton.alt{
+  color: rgb(var(--primary-accent-rgb));
+  background-color: white;
+  border: 2px solid rgb(var(--primary-accent-rgb));
+}
+
+/* Banner content Text */
+.banner-content-text{
+  margin-bottom: 1em
 }
