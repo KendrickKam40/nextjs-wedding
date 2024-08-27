@@ -59,7 +59,7 @@ export default function Page({params} : {params : any}) {
              <div className="cardContainer">
                 <div className="formBody">
                     <div className="attending-guests">
-                    {/* {
+                    {
                         guests.map((guest : any)=>(
                                     <Confirmation 
                                     key={guest.id}
@@ -68,7 +68,7 @@ export default function Page({params} : {params : any}) {
                                     onEmailChange={handleChangeEmail}
                                     />
                         ))
-                    } */}
+                    }
                     </div>
                     <button type="submit" className="submitButton" onClick={handleRSVP}>RSVP</button>
                 </div>

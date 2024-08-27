@@ -63,15 +63,15 @@ export default function Page() {
    
 
     async function handleEmailChange(e :any){
-        setEmail(e.target.value);
+        setEmail(e.target.value as string);
   
 
         const userData = await getDataByEmail(e.target.value);
 
         console.log(userData)
         if(userData){
-            setUserId(userData.id)
-            setFoundEmail(userData.email ? true : false)
+            setUserId(userData.id as string)
+            setFoundEmail(userData.email as string? true : false)
         }
     }
     
