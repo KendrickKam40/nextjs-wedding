@@ -55,6 +55,10 @@ export default function Page({params} : {params : any}) {
         }
     }
 
+    function handleBack(){
+        router.push('/');
+    }
+
     return (
         <Suspense fallback={<LoadingSpinner />}>
         <div className="rsvpContainer">
@@ -72,7 +76,11 @@ export default function Page({params} : {params : any}) {
                         ))
                     }
                     </div>
-                    <button type="submit" className="submitButton" onClick={handleRSVP}>RSVP</button>
+                    <div className='form-footer'>
+                        <button className="backButton" onClick={handleBack}>Back</button>
+                        <button className="submitButton" onClick={handleRSVP}>Save</button>
+                    </div>
+                    
                 </div>
         
             </div>

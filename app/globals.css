@@ -36,9 +36,6 @@ body {
   width: 100%;
 }
 
-span{
-  color: rgb(var(--secondary-rgb));
-}
 
 section{
   position: relative;
@@ -166,6 +163,15 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
   font-weight: 700;
 }
 
+/* back button */
+.backButton{
+  background-color: #FFF;
+  color: rgb(var(--primary-accent-rgb));
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid rgb(var(--primary-accent-rgb));
+}
 /* Banner content Text */
 .banner-content-text{
   margin-bottom: 1em

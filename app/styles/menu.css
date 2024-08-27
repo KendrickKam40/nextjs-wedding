@@ -4,7 +4,34 @@
     align-items: center;
 }
 
+.menu-section.menu-card{
+    border-radius: 28px;
+    box-sizing: border-box;
+    clip-path: inset(1px 1px 1px 1px round 28px);
+    height: 100%;
+    overflow: hidden;
+    background: white;
+    padding: 12px 24px;
+}
 p.typography-family-paragraph{
     font-weight: 700;
     color: rgb(var( --secondary-rgb));
 }
+
+.menu-content{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .status{
+        display: none;
+    }
+
+    p.typography-family-paragraph{
+        font-weight: 700;
+        color: rgb(var( --secondary-rgb));
+        font-size: 14px;
+    }
+  }

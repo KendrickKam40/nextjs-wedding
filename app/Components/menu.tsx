@@ -12,6 +12,9 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Chip from '@mui/material/Chip';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 export default function MenuBar(){
     const [user, setUser] = useContext<any>(UserContext);
@@ -60,9 +63,20 @@ export default function MenuBar(){
 
     return (
        <>
-        <section className='menu-section'>
+        <section className='menu-section menu-card'>
             <div className='menu-content'>
                 <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
+                <div className='status'>
+                    {
+                        userData?.confirmed &&
+                        <Chip label="CONFIRMED" icon={<CelebrationIcon />} color="success"/>
+                    }
+                    {
+                        !userData?.confirmed &&
+                        <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
+                    }
+                </div>
+               
             </div>
             <div className='menu-actions'>
             <IconButton
