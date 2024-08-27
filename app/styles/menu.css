@@ -1,0 +1,10 @@
+.menu-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+p.typography-family-paragraph{
+    font-weight: 500;
+    color: rgb(var( --secondary-rgb));
+}

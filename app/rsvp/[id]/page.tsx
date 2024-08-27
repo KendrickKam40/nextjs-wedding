@@ -1,11 +1,13 @@
 'use client'
 import '@/app/styles/form.css';
-import Confirmation from './confirmation';
-import { getData, getDataByParty, saveData } from './actions';
-import { useEffect, useState } from 'react';
-import clsx from 'clsx';
+import Confirmation from '@/app/rsvp/[id]/confirmation';
+import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
+import { SetStateAction, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 export default function Page({params} : {params : any}) {
-    const[guests , setGuests] = useState<any>([]);
+    const[guests , setGuests] = useState<any[]>([]);
+
+    const router = useRouter();
 
     useEffect(()=>{
         const setupData = async ()=>{
@@ -15,7 +17,7 @@ export default function Page({params} : {params : any}) {
             const partyName = refUser.party;
 
             //get party members
-            const partyGuests = await getDataByParty(partyName);
+            const partyGuests= await getDataByParty(partyName);
             setGuests(partyGuests);
         }
 
@@ -45,6 +47,7 @@ export default function Page({params} : {params : any}) {
                 await saveData(guest);
             }
             alert('RSVPs saved successfully!');
+            router.push('/')
         } catch (error) {
             console.error('Error saving RSVPs:', error);
             alert('There was an error saving the RSVPs. Please try again.');
