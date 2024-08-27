@@ -8,7 +8,7 @@ import { UserContext } from "@/app/contextProvider";
 
 import LoadingSpinner from "@/app/Components/loader";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { getDataByEmail } from "./actions";
+import { updateEmail,getDataByName } from "./actions";
 
 export default function Page() {
     const [user, setUser] = useContext<any>(UserContext);
@@ -19,9 +19,22 @@ export default function Page() {
 
     const [foundEmail,setFoundEmail] = useState(false);
 
+    const [valid, setValid] = useState(false);
+
+    const [foundName,setFoundName] = useState(false);
+
     const [userId,setUserId] = useState("");
 
-    const [name, setName] = useState<string>();
+    const [errors,setErrors] = useState<string[]>([]);
+
+    const [name, setName] = useState("");
+
+    const validateEmail = (email : string) => {
+        return email.match(
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+      };
+      
 
     useEffect(() => {
         user?.issuer && router.push(`/`);
@@ -30,8 +43,12 @@ export default function Page() {
       const handleLogin = async (e : any) => {
         e.preventDefault();
 
-        if(foundEmail){
+        if(foundEmail && foundName && valid){
             try {
+                const emailUpdate = await updateEmail(name , email);
+
+                console.log("Email Update:", emailUpdate)
+
                 if(magic){
                     const didToken = await magic.auth.loginWithEmailOTP({
                         email
@@ -61,23 +78,58 @@ export default function Page() {
               
           
               
-        }else{
-            console.error("email not found")
+        }else if(!foundName){
+            console.error("Name not found")
+            alert('Your name was not found.')
+        }else if(!foundEmail){
+            alert('Please enter your email!')
         }
       };
 
    
 
     async function handleEmailChange(e :any){
-        setEmail(e.target.value as string);
+        const emailString = e.target.value as string
+        setEmail(emailString);
 
-        const userData = await getDataByEmail(e.target.value);
+        if(validateEmail(emailString)){
+            setValid(true)
+            setFoundEmail(true)
+        }else{
+            setValid(false)
+            setFoundEmail(false);
+        }
+       
+    }
+
+    async function handleName(e :any){
+        setName(e.target.value as string);
+
+        const userData = await getDataByName(e.target.value);
 
         console.log(userData)
-        if(userData){
+
+        if(userData.id){
             setUserId(userData.id as string)
-            setFoundEmail(userData.email as string ? true : false)
+        }
+        
+        if(userData.name && userData.name !== ""){
+            setFoundName(userData.name as string ? true : false)
             setName(userData.name as string);
+        }else{
+            setFoundName(false)
+        }
+
+        if(userData.email && userData.email !== ""){
+
+            setEmail(userData.email as string);
+            
+            if(validateEmail(userData.email)){
+                setValid(true)
+                setFoundEmail(true)
+            }
+        }else{
+            setFoundEmail(false)
         }
     }
     
@@ -92,41 +144,61 @@ export default function Page() {
                     <div className="formBody">
                         <form onSubmit={handleLogin}>
                             <div className="form-instructions">
-                                <h1 className="typography-card-headline">Enter your email to continue</h1>
-                                <p className="typography-family-paragraph">
-                                    If your email is found, the RSVP button will appear.
-                                </p>
+                                <h1 className="typography-card-headline">Enter your name to continue</h1>
+                                
                             </div>
-                            
                             <div className="formText">
                                 <input 
-                                name="email" 
-                                type="email" 
-                                className={clsx("inputText",{'inputTextEntered' : email} )}
-                                value={email}
-                                onChange={handleEmailChange}/>
-                                <span className="formTextLabel">Email</span>
+                                name="name" 
+                                type="text" 
+                                className={clsx("inputText",{'inputTextEntered' : name} )}
+                                value={name}
+                                onChange={handleName}/>
+                                <span className="formTextLabel">Name</span>
                                 {
-                                    foundEmail &&  
+                                    foundName &&  
                                     <span className="input-icon">
                                         <CheckCircleIcon  color="success"/>
                                     </span>
                                 }
                                
                             </div>
+                            {
+                                foundName && 
+                                <div className="formText">
+                                    <input 
+                                    name="email" 
+                                    type="email" 
+                                    className={clsx("inputText",{'inputTextEntered' : email} )}
+                                    value={email}
+                                    onChange={handleEmailChange}/>
+                                    <span className="formTextLabel">Email</span>
+                                    {
+                                        foundEmail &&  
+                                        <span className="input-icon">
+                                            <CheckCircleIcon  color="success"/>
+                                        </span>
+                                    }
+                                
+                                </div>
+                            }
+                           
                             <div className="form-footer">
                                 <div className="form-footer-text">
                                     {
-                                        name && 
+                                        errors.length > 0 && 
                                         <>
-                                            
-                                                <p className="typography-family-subtext">Hi, {name}</p>
-                                            
+                                            {
+                                                errors.map((error)=>{
+                                                    <p>{error}</p>
+                                                })
+                                            }
                                         </>
+                                        
                                     }
                                 </div>
                                 {
-                                    foundEmail && 
+                                    foundEmail && valid && 
                                     <>
                                         
                                         <button type="submit" className="submitButton">
