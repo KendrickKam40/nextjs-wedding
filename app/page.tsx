@@ -15,12 +15,15 @@ import { DisplayTile } from "./Components/tile";
 import LinearProgress from '@mui/material/LinearProgress';
 import MenuBar from "./Components/menu";
 import { getDataByEmail } from "./actions";
+import LoadingSpinner from '@/app/Components/loader';
 
 
 
 export default function Home() {
   const [user, setUser] = useContext<any>(UserContext);
-  const [userId,setUserId] = useState<any>("");
+  const [userId,setUserId] = useState<any>();
+
+
 
   useEffect(()=>{
     async function getData(){
@@ -31,11 +34,13 @@ export default function Home() {
           console.log(uData);
           setUserId(uData.id);        
         }
+
+        
       }
-     
     }
 
     getData();
+    
   },[user]);
 
 
@@ -48,12 +53,12 @@ export default function Home() {
   return (
           <main className="flex min-h-screen flex-col items-center justify-between main-container">
           <div className='body-container'>
-          {user?.loading && 
-          <>
-            <p>Loading...</p>
-            <LinearProgress />
-          </>}
-          {user?.issuer && (
+          { !userId && 
+            <div className="loading-container">
+              <LoadingSpinner />
+            </div>
+          }
+          {userId && (
                   <>
                   <MenuBar/>
                   <section className="banner-section">

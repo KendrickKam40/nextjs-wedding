@@ -19,7 +19,13 @@
   padding: 24px;
 }
 
-
+.loading-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
 
 body {
   color: rgb(var(--secondary-rgb));
@@ -83,6 +89,15 @@ section{
   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
+.button-text{
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  color:#FFF;
+}
+
 h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
   margin-top: 0.8em;
 }
@@ -130,17 +145,25 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
 }
 /* Submit Button */
 .submitButton{
-  background-color: rgb(var(--primary-accent-rgb));
-  color: rgb(var(--secondary-rgb));
+  background-color: rgb(var(--secondary-rgb));
+  color: #FFF;
   width: fit-content;
   padding: 10px 20px;
   border-radius: 10px;
 }
 
 .submitButton.alt{
-  color: rgb(var(--primary-accent-rgb));
+  color: rgb(var(--secondary-rgb));
   background-color: white;
-  border: 2px solid rgb(var(--primary-accent-rgb));
+  border: 2px solid rgb(var--secondary-rgb);
+  font-weight: 700;
+  transition: all 0.5s cubic-bezier(0,0,0.5,1);
+}
+
+.submitButton.alt:hover{
+  color: white;
+  background-color: rgb(var(--secondary-rgb));
+  font-weight: 700;
 }
 
 /* Banner content Text */
