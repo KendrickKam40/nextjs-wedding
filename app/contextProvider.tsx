@@ -1,18 +1,20 @@
 'use client'
 
-import {UserContext} from '@/app/lib/UserContext';
+import { createContext } from 'react';
+
 
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
 
+export const UserContext = createContext({})
  
 export default function UserProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-    const [user, setUser] = useContext<any>(UserContext);
+    const [user, setUser] = useState<any>();
     const router = useRouter();
 
     useEffect(() => {

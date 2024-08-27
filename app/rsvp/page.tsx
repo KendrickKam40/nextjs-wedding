@@ -4,7 +4,8 @@ import '@/app/styles/form.css';
 import clsx from 'clsx';
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
-import { UserContext } from "@/app/lib/UserContext";
+import { UserContext } from "@/app/contextProvider";
+
 import { getDataByEmail } from "./actions";
 
 export default function Page() {
@@ -43,9 +44,10 @@ export default function Page() {
                     console.log(reponseJson)
     
                     if (res.ok) {
-                    const userMetadata = await magic?.user.getMetadata();
-                    setUser(userMetadata);
-                    router.push("/");
+                        const userMetadata = await magic?.user.getMetadata();
+                        console.log(userMetadata)
+                        setUser(userMetadata);
+                        router.push("/");
                     }
               
                 }  
@@ -71,7 +73,7 @@ export default function Page() {
         console.log(userData)
         if(userData){
             setUserId(userData.id as string)
-            setFoundEmail(userData.email as string? true : false)
+            setFoundEmail(userData.email as string ? true : false)
         }
     }
     

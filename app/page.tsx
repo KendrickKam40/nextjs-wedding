@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { useContext, useEffect ,useState} from 'react';
-import { UserContext } from '@/app/lib/UserContext';
+import { UserContext } from '@/app/contextProvider';
 
 // Icons
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';

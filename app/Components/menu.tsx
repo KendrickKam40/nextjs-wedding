@@ -2,7 +2,7 @@
 
 import '@/app/styles/menu.css'
 import { useContext, useEffect, useState } from 'react'
-import { UserContext } from '@/app/lib/UserContext';
+import { UserContext } from '@/app/contextProvider';
 import { getDataByEmail } from '../actions';
 import { magic } from '@/app/lib/magic';
 import { useRouter } from "next/navigation";
