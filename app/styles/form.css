@@ -121,3 +121,11 @@ h1{
   justify-content: space-between;
   flex-direction: row;
 }
+
+.email-text{
+  padding-bottom: 10px;
+}
+
+.email-text p.typography-family-paragraph{
+  font-weight: 700;
+}
