@@ -52,7 +52,7 @@ export async function getData(id : any){
 
 
 export async function getDataByParty(party : any){
-    if(party){
+    if(party && party !== ""){
         try{
             const {rows, fields} = await sql`SELECT * FROM guests WHERE party=${party}`;
 
