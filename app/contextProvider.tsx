@@ -19,10 +19,10 @@ export default function UserProvider({
     useEffect(() => {
         setUser({ loading: true });
         if(magic){
-          magic?.user.isLoggedIn().then((isLoggedIn : any) => {
+          magic.user.isLoggedIn().then((isLoggedIn : any) => {
             console.log(isLoggedIn)
             if (isLoggedIn && magic) {
-                magic.user.getMetadata().then((userData : any) => setUser(userData));
+                magic.user.getInfo().then((userData : any) => setUser(userData));
                 router.push("/");
             } else {
                 router.push("/rsvp");
