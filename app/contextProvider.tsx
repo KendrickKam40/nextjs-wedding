@@ -2,8 +2,7 @@
 
 import { createContext } from 'react';
 
-
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
 
@@ -21,6 +20,7 @@ export default function UserProvider({
         setUser({ loading: true });
         if(magic){
           magic?.user.isLoggedIn().then((isLoggedIn : any) => {
+            console.log(isLoggedIn)
             if (isLoggedIn && magic) {
                 magic.user.getMetadata().then((userData : any) => setUser(userData));
                 router.push("/");
@@ -32,6 +32,7 @@ export default function UserProvider({
         }
        
     }, []);
+
   return <UserContext.Provider value={[user, setUser] as any}>
     {children}
     </UserContext.Provider>
