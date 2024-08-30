@@ -19,7 +19,6 @@
 }
 p.typography-family-paragraph{
     font-weight: 700;
-    color: rgb(var( --secondary-rgb));
 }
 
 .menu-content{
@@ -51,6 +50,7 @@ p.typography-family-paragraph{
     border-radius: 0px !important;
     clip-path: stroke-box;
     margin: 0;
+    border-bottom: 1px solid rgb(var( --secondary-rgb));
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */

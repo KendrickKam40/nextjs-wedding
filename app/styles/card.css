@@ -19,6 +19,14 @@
   .card .card-padding.card-modifier.image{
     padding-inline-end: 32px;
   }
+
+  .image{
+    color: white;
+  }
+
+  .image.overlay{
+    color: rgb(var(--secondary-rgb))
+  }
   
   .card .card-modifier {
     width: 405px;
@@ -52,7 +60,7 @@
     object-position: center center;
   }
 
-  .card-image::before {
+  .card-image.overlay::before {
     content: "";
     display: block;
     position: absolute;
