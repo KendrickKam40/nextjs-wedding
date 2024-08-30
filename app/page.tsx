@@ -48,7 +48,7 @@ const groupTravelOptions = [
               <p><b>Booking Info:</b> Scooters can be rented directly from your accommodation or through various rental shops around Bali. We recommend arranging rentals in advance.</p>
               <p><b>Cost:</b> Daily rental rates are affordable, typically ranging from $5 to $10 USD per day. Helmets are included.</p>
               <p><b>Pick-Up/Drop-Off:</b> Scooters can be picked up from and returned to your rental location. Some rental companies also offer delivery to your accommodation.</p>
-              <p><b>Additional Info:</b> Make sure to have an international driver's license and wear your helmet at all times. Bali's roads can be busy, so drive carefully!</p>
+              <p><b>Additional Info:</b> Make sure to have an international driver&apos;s license and wear your helmet at all times. Bali&apos;s roads can be busy, so drive carefully!</p>
           </>
       ),
       image: null,
@@ -61,7 +61,7 @@ const nearbyAccommodations = [
       title: "Villa Tantangan",
       content: (
           <>
-              <p><b>Location:</b> Just a 10-minute drive from Villa Vedas, Villa Tantangan offers a private and luxurious stay with breathtaking ocean views. It's a secluded retreat ideal for guests who prefer a more intimate setting.</p>
+              <p><b>Location:</b> Just a 10-minute drive from Villa Vedas, Villa Tantangan offers a private and luxurious stay with breathtaking ocean views. It&apos;s a secluded retreat ideal for guests who prefer a more intimate setting.</p>
               <p><b>Accommodation Details:</b> The villa features spacious bedrooms with en-suite bathrooms, an infinity pool, and a fully equipped kitchen. The open-plan design allows for a seamless indoor-outdoor living experience.</p>
               <p><b>Booking Information:</b> Guests can book individual rooms or the entire villa. Early booking is recommended due to limited availability.</p>
               <p><b>Amenities:</b> The villa includes daily housekeeping, Wi-Fi, and a private chef upon request. Perfect for those seeking tranquility and luxury.</p>
@@ -88,7 +88,7 @@ const nearbyAccommodations = [
       content: (
           <>
               <p><b>Location:</b> About 25 minutes away from Villa Vedas, Tugu Bali is a boutique hotel located in Canggu, known for its unique blend of traditional Indonesian art and culture with luxurious amenities.</p>
-              <p><b>Accommodation Details:</b> The hotel offers individually designed suites and villas, each adorned with antiques and artworks from Indonesia's past. Some villas include private plunge pools and garden views.</p>
+              <p><b>Accommodation Details:</b> The hotel offers individually designed suites and villas, each adorned with antiques and artworks from Indonesia&apos;s past. Some villas include private plunge pools and garden views.</p>
               <p><b>Booking Information:</b> Tugu Bali is ideal for guests who appreciate culture and history. Rooms can be booked individually or as part of a package.</p>
               <p><b>Amenities:</b> The hotel features a spa, cultural dining experiences, and various activities such as cooking classes and Balinese dance performances.</p>
           </>
@@ -101,9 +101,9 @@ const nearbyAccommodations = [
       content: (
           <>
               <p><b>Location:</b> Situated in Canggu, about 30 minutes from Villa Vedas, The Haven Suites offers contemporary suites with stunning sea views and direct beach access.</p>
-              <p><b>Accommodation Details:</b> The suites are spacious and modern, equipped with large balconies or terraces, luxurious bathrooms, and ocean views. It's a great option for those looking for comfort and style.</p>
+              <p><b>Accommodation Details:</b> The suites are spacious and modern, equipped with large balconies or terraces, luxurious bathrooms, and ocean views. It&apos;s a great option for those looking for comfort and style.</p>
               <p><b>Booking Information:</b> A variety of suites are available, from standard to premium oceanfront options. Booking early is advisable during peak season.</p>
-              <p><b>Amenities:</b> The hotel offers a large swimming pool, fitness center, and on-site dining options. It's also close to some of Canggu's popular cafes and shops.</p>
+              <p><b>Amenities:</b> The hotel offers a large swimming pool, fitness center, and on-site dining options. It&apos;s also close to some of Canggu&apos;s popular cafes and shops.</p>
           </>
       ),
       image: "/the_haven_suites.jpg",
@@ -116,7 +116,7 @@ const nearbyAccommodations = [
               <p><b>Location:</b> About 20 minutes from Villa Vedas, Alila Villas Soori is an ultra-luxury resort offering private villas with beachfront or rice field views. The design is sleek and modern, perfect for a high-end stay.</p>
               <p><b>Accommodation Details:</b> Each villa comes with a private pool, sun deck, and a personalized butler service. The interiors are minimalist, focusing on comfort and tranquility.</p>
               <p><b>Booking Information:</b> The villas range in size, accommodating couples or larger groups. Advanced booking is recommended for the best rates and availability.</p>
-              <p><b>Amenities:</b> The resort offers fine dining, a spa, and a range of wellness activities including yoga and meditation. It's also known for its sustainable practices and community engagement.</p>
+              <p><b>Amenities:</b> The resort offers fine dining, a spa, and a range of wellness activities including yoga and meditation. It&apos;s also known for its sustainable practices and community engagement.</p>
           </>
       ),
       image: "/alila_villas_soori.jpeg",
