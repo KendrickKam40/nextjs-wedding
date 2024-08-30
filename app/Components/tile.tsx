@@ -32,7 +32,7 @@ export function DisplayTile({
     console.log(props)
     const [link,setLink] = useState('');
     const [modal,setModal] = useState(false);
-
+    const [backgroundImage, setBackgroundImage] = useState('');
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -45,13 +45,19 @@ export function DisplayTile({
         if(props.modal){
             setModal(true);
         }
+
+        if(props.backgroundImage){
+            setBackgroundImage(props.backgroundImage as string);
+        }
     
     },[])
-   
+    function checkBGImage(){
+        return  backgroundImage !== '' && backgroundImage
+    }
     return (
         <div className="display-tile card-container">
             <div className="card" tabIndex={-1}>
-                <div className="card-padding card-modifier">
+                <div className={clsx("card-padding","card-modifier",{'image' :checkBGImage})}>
                     <div className="card-viewport-content">
                         <div className="card-content">
                             <div className="icon-container">
@@ -61,6 +67,15 @@ export function DisplayTile({
                                 {children}
                             </div>
                         </div>
+                        {
+                            checkBGImage() &&
+                            <div className='card-image'>
+                                <picture>
+                                    <img src={backgroundImage}/>
+                                </picture>
+                            </div>  
+                        }
+                        
                     </div>
                 </div>
             </div>

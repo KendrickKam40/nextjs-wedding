@@ -16,7 +16,7 @@ import Chip from '@mui/material/Chip';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-export default function MenuBar(){
+export default function MenuBar({...props}){
     const [user, setUser] = useContext<any>(UserContext);
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
@@ -40,9 +40,11 @@ export default function MenuBar(){
 
     const logout = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
+        props.setLoading(true);
         if(magic){
             magic.user.logout().then(() => {
                 setUser({ user: null });
+                props.setLoading(false);
                 router.push('/rsvp');
             });
         }
@@ -60,10 +62,25 @@ export default function MenuBar(){
         setAnchorEl(null);
     };
 
+    window.onscroll = function(){attachSticky()};
+
+    function attachSticky(){
+        var navbar = document.querySelector('.menu-section');
+        if(navbar instanceof HTMLElement){
+            var sticky = navbar.offsetTop;
+            console.log(window.scrollY, sticky)
+            if(window.scrollY > (sticky + 24 + 12)){
+                navbar.classList.add("sticky")
+            }else{
+                navbar.classList.remove("sticky")
+            }
+        }
+    }
 
     return (
        <>
-        <section className='menu-section menu-card'>
+        <section className='menu-section'>
+            <div className='menu-card'>
             <div className='menu-content'>
                 <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
                 <div className='status'>
@@ -104,6 +121,8 @@ export default function MenuBar(){
             </Menu>
 
             </div>
+            </div>
+            
            
         
         </section>

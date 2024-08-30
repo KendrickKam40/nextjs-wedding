@@ -1,10 +1,10 @@
 .menu-section{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  max-width: 100%;
+  z-index: 2;
 }
 
-.menu-section.menu-card{
+.menu-section .menu-card{
     border-radius: 28px;
     box-sizing: border-box;
     clip-path: inset(1px 1px 1px 1px round 28px);
@@ -12,6 +12,10 @@
     overflow: hidden;
     background: white;
     padding: 12px 24px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.5s cubic-bezier(0,0,0.5,1);
 }
 p.typography-family-paragraph{
     font-weight: 700;
@@ -35,3 +39,21 @@ p.typography-family-paragraph{
         font-size: 14px;
     }
   }
+
+
+.menu-section.sticky .menu-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    height: fit-content !important;
+    border-radius: 0px !important;
+    clip-path: stroke-box;
+    margin: 0;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .banner-section {
+    padding-top: 80px;
+}

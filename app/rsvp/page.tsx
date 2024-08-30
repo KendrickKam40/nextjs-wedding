@@ -1,5 +1,5 @@
 'use client';
-import { useContext, useState, useEffect, Suspense } from "react";
+import { useContext, useState, useEffect } from "react";
 import '@/app/styles/form.css';
 import clsx from 'clsx';
 import { useRouter } from "next/navigation";
@@ -43,6 +43,8 @@ export default function Page() {
 
     const [name, setName] = useState("");
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const [state, setState] = useState<State>({
         open: false,
         vertical: 'top',
@@ -68,6 +70,7 @@ export default function Page() {
     useEffect(() => {
         user?.issuer && router.push(`/`);
       }, [user]);
+
     
       const handleLogin = async (e : any) => {
         e.preventDefault();
@@ -134,15 +137,17 @@ export default function Page() {
     }
 
     async function handleName(e :any){
-
+        setIsLoading(true);
         setName(e.target.value as string);
+        setFoundName(false);
 
         const userData = await getDataByName(e.target.value);
-
+//        setIsLoading(false);
         if(Object.keys(userData).length > 0){
-            setComponentStates(userData as Guest);
+            await setComponentStates(userData as Guest);
+        }else{
+            setIsLoading(false);
         }
-       
     }
 
     function setComponentStates(userData : Guest){
@@ -164,17 +169,19 @@ export default function Page() {
         }else{
             setFoundEmail(false)
         }
+
+        setIsLoading(false);
     }
     
 
 
     return (
-        <>
-        <Suspense fallback={<LoadingSpinner />}>
-  
+        <>  
             <div className="rsvpContainer">
              <div className="cardContainer">
                     <div className="formBody">
+
+
                         <form onSubmit={handleLogin}>
                             <div className="form-instructions">
                                 <h1 className="typography-card-headline">Enter your name to continue</h1>
@@ -188,14 +195,17 @@ export default function Page() {
                                 value={name}
                                 onChange={handleName}/>
                                 <span className="formTextLabel">Name</span>
+                              
                                 {
-                                    foundName &&  
+                                    foundName && !isLoading && 
                                     <span className="input-icon">
                                         <CheckCircleIcon  color="success"/>
                                     </span>
                                 }
-                               
                             </div>
+                            {
+                                    isLoading && <span className="loading-container"><LoadingSpinner/></span>
+                            }
                             {
                                 foundName && 
                                 <>
@@ -237,6 +247,7 @@ export default function Page() {
                             </div>
                           
                         </form>
+                        
                     </div>
                 
             </div>
@@ -248,7 +259,6 @@ export default function Page() {
             message={errors.length > 0 ? errors[0] as string : ''}
             key={vertical + horizontal}
         />
-        </Suspense>
         </>
          
        

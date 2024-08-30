@@ -51,6 +51,10 @@ h1{
   width: 100%;
   text-overflow: ellipsis;
   }
+
+  input.inputText.inputTextEntered {
+    padding-right: 50px;
+}
   
   .formText{
     position: relative;
@@ -128,4 +132,8 @@ h1{
 
 .email-text p.typography-family-paragraph{
   font-weight: 700;
+}
+
+.formBody .loading-container {
+  height: fit-content;
 }
