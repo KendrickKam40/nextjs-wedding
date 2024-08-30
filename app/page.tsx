@@ -61,7 +61,7 @@ const tilesInfo = [
     subtext: "",
     additional: "",
     link:"",
-    backgroundImage:"",
+    backgroundImage:"/villa.jpg",
     overlay: true,
     modal: false,
   }
@@ -74,7 +74,7 @@ const tilesInfo = [
     subtext: "",
     additional: "",
     link:"",
-    backgroundImage:"",
+    backgroundImage:"/traffic.jpg",
     overlay: true,
     modal: false,
   }
