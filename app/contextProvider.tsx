@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
 
-export const UserContext = createContext({})
+export const UserContext = createContext(null)
  
 export default function UserProvider({
   children,
@@ -19,7 +19,7 @@ export default function UserProvider({
     useEffect(() => {
         setUser({ loading: true });
         if(magic){
-          magic.user.isLoggedIn().then((isLoggedIn : any) => {
+          magic.user.isLoggedIn().then((isLoggedIn : boolean) => {
             console.log(isLoggedIn)
             if (isLoggedIn && magic) {
                 magic.user.getInfo().then((userData : any) => setUser(userData));

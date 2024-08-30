@@ -2,7 +2,7 @@
 import '@/app/styles/form.css';
 import Confirmation from '@/app/rsvp/[id]/confirmation';
 import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
-import { SetStateAction, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/app/Components/loader';
 export default function Page({params} : {params : any}) {
@@ -60,7 +60,6 @@ export default function Page({params} : {params : any}) {
     }
 
     return (
-        <Suspense fallback={<LoadingSpinner />}>
         <div className="rsvpContainer">
              <div className="cardContainer">
                 <div className="formBody">
@@ -85,6 +84,5 @@ export default function Page({params} : {params : any}) {
         
             </div>
         </div>
-        </Suspense>
     )
 }

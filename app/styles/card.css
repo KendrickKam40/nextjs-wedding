@@ -15,10 +15,53 @@
     height: 100%;
     width: auto;
   }
+
+  .card .card-padding.card-modifier.image{
+    padding-inline-end: 32px;
+  }
   
   .card .card-modifier {
     width: 405px;
     padding: 32px;
+  }
+
+  .card-content{
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-image picture{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+  }
+
+  .card-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .card-image::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Change the color and opacity as needed */
+    z-index: 1;
   }
 
   .display-tile:hover {
