@@ -28,8 +28,6 @@ export function DisplayTile({
     children,
     ...props
 }:any){
-
-    console.log(props)
     const [link,setLink] = useState('');
     const [modal,setModal] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState('');

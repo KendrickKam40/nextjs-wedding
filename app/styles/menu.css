@@ -34,7 +34,6 @@ p.typography-family-paragraph{
 
     p.typography-family-paragraph{
         font-weight: 700;
-        color: rgb(var( --secondary-rgb));
         font-size: 14px;
     }
   }

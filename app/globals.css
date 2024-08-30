@@ -150,8 +150,9 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
 }
 
 .scroll-container {
+  overflow: visible;
   position: relative;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   padding: 10px 0;
@@ -221,4 +222,28 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
 
 iframe{
   border-radius: 10px;
+}
+
+/* Weather */
+
+.weather-content {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  flex-direction: row;
+}
+@media (max-width: 600px) {
+  .weather-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.temp-container h1.title {
+  font-size: 60px;
+  font-weight: 500;
+}
+
+.temp-container p.subtext {
+  font-weight: 200;
+  margin: 0;
 }

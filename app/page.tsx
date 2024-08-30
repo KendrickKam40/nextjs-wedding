@@ -8,6 +8,9 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import HotelIcon from '@mui/icons-material/Hotel';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 
 // Custom Components
 import Banner from "./Components/banner";
@@ -16,8 +19,9 @@ import MenuBar from "./Components/menu";
 import { getDataByEmail } from "./actions";
 import LoadingSpinner from "./Components/loader";
 
-const tilesBig =[
+const tilesBig = [
   {
+    key: 'location',
     icon:<LocationOnIcon/>,
     title: "Where?",
     content: "Villa Vedas, Bali",
@@ -30,6 +34,7 @@ const tilesBig =[
   }
   ,
   {
+    key: 'schedule',
     icon:null,
     title: null,
     content: null,
@@ -47,20 +52,76 @@ const tilesBig =[
   }
 ]
 
+const tilesInfo = [
+  {
+    key: 'accomodation',
+    icon:<HotelIcon/>,
+    title: "Nearby Accomodation",
+    content: "",
+    subtext: "",
+    additional: "",
+    link:"",
+    backgroundImage:"",
+    overlay: true,
+    modal: false,
+  }
+  ,
+  {
+    key: 'travel',
+    icon:<AirportShuttleIcon/>,
+    title: "Group Travel",
+    content: "",
+    subtext: "",
+    additional: "",
+    link:"",
+    backgroundImage:"",
+    overlay: true,
+    modal: false,
+  }
+  ,
+  {
+    key: 'weather',
+    icon:<WbSunnyIcon/>,
+    title: "Weather",
+    content: "",
+    subtext: "",
+    additional: <>
+      <div className="weather-content">
+        <div className="temp-container">
+          <h1 className="title">29°C</h1>
+          <p className="subtext">L: 22°C</p>
+        </div>
+        <div className="text-container">
+          <p className="typography-family-paragraph">Expect high heat & humidity with an average 10 hours of sunshine per day.</p>
+          <br/>
+          <p className="typography-family-subtext">July is tied with August for the least amount of average rainfall per month, at just 40mm</p>
+        </div>
+      </div>
+    </>,
+    link:"",
+    backgroundImage:"/weather.jpg",
+    overlay: true,
+    modal: false,
+  }
+  ,
+]
+
 const tiles = [
   {
+    key: 'date',
     icon:<CalendarMonthIcon/>,
     title: "Save the date",
     content:"28th July 2025",
     subtext:"",
     additional: null,
     link:"/CalanderInvite.ics",
-    backgroundImage:'/ABSTRACT_1.avif',
-    overlay: false,
+    backgroundImage:'/saveTheDate.png',
+    overlay: true,
     modal: false,
   },
   
   {
+    key: 'dressCode',
     icon:null,
     title: null,
     content: null,
@@ -78,14 +139,15 @@ const tiles = [
   }
   ,
   {
+    key: 'sharePhotos',
     icon:<FiberManualRecordIcon/>,
     title: "Share your photos with us!",
     content: "The Dots App",
     subtext: "",
     additional: null,
     link:"",
-    backgroundImage:'/ABSTRACT_2.avif',
-    overlay: false,
+    backgroundImage:'/dots.webp',
+    overlay: true,
     modal: true,
   }
 ]
@@ -103,7 +165,6 @@ export default function Home() {
         const uData = await getDataByEmail(user.email);
         
         if(uData){
-          console.log(uData);
           setUserId(uData.id);        
         }
         setIsLoading(false);
@@ -136,7 +197,7 @@ export default function Home() {
                   />
                   <section className="banner-section">
                     <Banner
-                    backgroundImage="/IMG_0032.JPG">
+                    backgroundImage="/bannerImage.jpg">
                       <div className="banner-content-text"> 
                         <h2 className="typography-section-eyebrow style-script-regular">You are invited!</h2>
                         <h1 className="typography-section-headline style-script-regular">Annissa & Kendrick</h1>
@@ -152,9 +213,9 @@ export default function Home() {
                     <div className="scroll-container">
                     <div className="card-set">
                     {
-                      tiles.map((tile)=>{
-                        return <>
+                      tiles.map((tile) =>
                           <DisplayTile
+                          key={tile.key}
                           Icon={tile.icon}
                           link={tile.link}
                           modal={tile.modal}
@@ -174,15 +235,14 @@ export default function Home() {
                             }
                            </div>
                           </DisplayTile>
-                        </>
-                      })
+                      )
                     }
                     </div>
                     <div className="card-set col-2">
                       {
-                        tilesBig.map((tile)=>{
-                          return <>
+                        tilesBig.map( (tile) =>
                               <DisplayTile
+                              key={tile.key}
                               Icon={tile.icon}
                               link={tile.link}
                               modal={tile.modal}
@@ -200,8 +260,33 @@ export default function Home() {
                                   tile?.additional ? <><div className="additional-content">{tile.additional}</div></> : null
                                 }
                               </DisplayTile>
-                            </>
-                        })
+                        )
+                      }
+                    </div>
+
+                    <div className="card-set">
+                      {
+                        tilesInfo.map( (tile) =>
+                              <DisplayTile
+                              key={tile.key}
+                              Icon={tile.icon}
+                              link={tile.link}
+                              modal={tile.modal}
+                              backgroundImage={tile.backgroundImage}
+                              overlay={tile.overlay}
+                              >
+                                <h3 className="typography-card-headline">{tile.title}</h3>
+                                <p className="typography-family-paragraph">
+                                  {tile.content}
+                                </p>
+                                <p className="typography-family-subtext">
+                                  {tile.subtext}
+                                </p>
+                                {
+                                  tile?.additional ? <><div className="additional-content">{tile.additional}</div></> : null
+                                }
+                              </DisplayTile>
+                        )
                       }
                     </div>
                       

@@ -20,7 +20,6 @@ export default function UserProvider({
         setUser({ loading: true });
         if(magic){
           magic.user.isLoggedIn().then((isLoggedIn : boolean) => {
-            console.log(isLoggedIn)
             if (isLoggedIn && magic) {
                 magic.user.getInfo().then((userData : any) => setUser(userData));
                 router.push("/");
