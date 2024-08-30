@@ -103,7 +103,7 @@ const nearbyAccommodations = [
               <p><b>Location:</b> Situated in Canggu, about 30 minutes from Villa Vedas, The Haven Suites offers contemporary suites with stunning sea views and direct beach access.</p>
               <p><b>Accommodation Details:</b> The suites are spacious and modern, equipped with large balconies or terraces, luxurious bathrooms, and ocean views. It's a great option for those looking for comfort and style.</p>
               <p><b>Booking Information:</b> A variety of suites are available, from standard to premium oceanfront options. Booking early is advisable during peak season.</p>
-              <p><b>Amenities:</b> The hotel offers a large swimming pool, fitness center, and on-site dining options. It’s also close to some of Canggu’s popular cafes and shops.</p>
+              <p><b>Amenities:</b> The hotel offers a large swimming pool, fitness center, and on-site dining options. It's also close to some of Canggu's popular cafes and shops.</p>
           </>
       ),
       image: "/the_haven_suites.jpg",
@@ -116,7 +116,7 @@ const nearbyAccommodations = [
               <p><b>Location:</b> About 20 minutes from Villa Vedas, Alila Villas Soori is an ultra-luxury resort offering private villas with beachfront or rice field views. The design is sleek and modern, perfect for a high-end stay.</p>
               <p><b>Accommodation Details:</b> Each villa comes with a private pool, sun deck, and a personalized butler service. The interiors are minimalist, focusing on comfort and tranquility.</p>
               <p><b>Booking Information:</b> The villas range in size, accommodating couples or larger groups. Advanced booking is recommended for the best rates and availability.</p>
-              <p><b>Amenities:</b> The resort offers fine dining, a spa, and a range of wellness activities including yoga and meditation. It’s also known for its sustainable practices and community engagement.</p>
+              <p><b>Amenities:</b> The resort offers fine dining, a spa, and a range of wellness activities including yoga and meditation. It's also known for its sustainable practices and community engagement.</p>
           </>
       ),
       image: "/alila_villas_soori.jpeg",
