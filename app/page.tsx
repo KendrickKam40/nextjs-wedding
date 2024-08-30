@@ -59,8 +59,8 @@ const tiles = [
   {
     icon:<FiberManualRecordIcon/>,
     title: "Share your photos with us!",
-    content: "",
-    subtext: "The Dots App",
+    content: "The Dots App",
+    subtext: "",
     additional: null,
     link:"",
     modal: true,
