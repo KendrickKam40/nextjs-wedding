@@ -44,7 +44,7 @@ export default function MenuBar({...props}){
         if(magic){
             magic.user.logout().then(() => {
                 setUser({ user: null });
-                props.setLoading(false);
+                //props.setLoading(false);
                 router.push('/rsvp');
             });
         }

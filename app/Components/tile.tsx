@@ -9,6 +9,12 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
+interface ModalContent {
+    title?: string;
+    content?: any;
+    image?: string;
+    alt?: string;
+}
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -32,6 +38,7 @@ export function DisplayTile({
     const [modal,setModal] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState('');
     const [overlay, setOverlay] = useState(false);
+    const [modalContent, setModalContent] = useState<ModalContent[]>([]);
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -52,6 +59,10 @@ export function DisplayTile({
 
         if(props.overlay){
             setOverlay(true);
+        }
+        console.log('modalC',props.modalContent)
+        if(props.modalContent){
+            setModalContent(props.modalContent as ModalContent[]);
         }
     
     },[])
@@ -112,11 +123,16 @@ export function DisplayTile({
                     >
                         <Box sx={style}>
                             <div className='modal-content'>
-                                <h1 className='typography-card-headline'>Instructions to upload photos</h1>
-                                <p className='typography-family-paragraph'>1. Download the <a className="typography-text-link" href='https://dotstheapp.com/us/' target='_blank'>Dots App</a></p>
-                                <p className='typography-family-paragraph'>2. Scan this QR Code OR copy this code <b>1JLb47lc</b></p>
+                            {modalContent && modalContent.map((content, index) => (
+                                    <div key={index}>
+                                        <h2 className="typography-card-headline">{content.title}</h2>
+                                        {content.content}
+                                        {content.image && <img src={content.image} alt={content.alt} style={{ maxWidth: '100%', marginTop: '10px' }} />}
+                                        <hr style={{ margin: '20px 0' }} />
+                                    </div>
+                                ))}                  
                             </div>
-                            <img src='IMG_5458.JPG'/>
+
                         </Box>
                     </Modal>
                     </div>

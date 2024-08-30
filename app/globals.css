@@ -38,7 +38,7 @@
 
 body {
   color: rgb(var(--secondary-rgb));
-  background: rgb(var(--background-rgb));
+  background: white;
 }
 
 .body-container{
