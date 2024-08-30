@@ -136,7 +136,7 @@ export default function Home() {
                   />
                   <section className="banner-section">
                     <Banner
-                    backgroundImage="/IMG_0005.JPG">
+                    backgroundImage="/IMG_0032.JPG">
                       <div className="banner-content-text"> 
                         <h2 className="typography-section-eyebrow style-script-regular">You are invited!</h2>
                         <h1 className="typography-section-headline style-script-regular">Annissa & Kendrick</h1>

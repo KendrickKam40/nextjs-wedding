@@ -69,7 +69,7 @@ export default function MenuBar({...props}){
         if(navbar instanceof HTMLElement){
             var sticky = navbar.offsetTop;
             console.log(window.scrollY, sticky)
-            if(window.scrollY > (sticky + 24 + 12)){
+            if(window.scrollY >= sticky){
                 navbar.classList.add("sticky")
             }else{
                 navbar.classList.remove("sticky")
