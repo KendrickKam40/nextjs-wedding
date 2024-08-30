@@ -91,8 +91,8 @@ export function DisplayTile({
             </div>
             {
                 link !== '' && link && !modal && (
-                    <a href={link} target='_blank' className='icon icon-cta card-cta-modal-button'>
-                    <div className='card-cta-modal-button-icon'>
+                    <a href={link} target='_blank' className={clsx('icon icon-cta card-cta-modal-button')}>
+                    <div className={clsx('card-cta-modal-button-icon',{'overlay' : overlay})}>
                         <ChevronRightIcon/>
                     </div>
                 </a>

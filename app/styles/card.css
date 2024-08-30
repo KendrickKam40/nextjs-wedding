@@ -148,6 +148,11 @@
     color: var(--icon-color);
 }
 
+.card-cta-modal-button .card-cta-modal-button-icon.overlay{
+  background-color: white;
+  color: black;
+}
+
 /* modal */
 .modal-content{
     margin-bottom: 1em;

@@ -198,6 +198,7 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
 
 .additional-content{
   padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .additional-content .google-map{
@@ -216,4 +217,8 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
 .center-flex{
   justify-content: center;
   align-items: center;
+}
+
+iframe{
+  border-radius: 10px;
 }
