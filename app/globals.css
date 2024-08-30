@@ -136,7 +136,7 @@ h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
   padding-bottom: 1em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .card-set { grid-template-columns: repeat(3, auto); }
   .card-set.col-2{
     grid-template-columns: repeat(2, auto);
