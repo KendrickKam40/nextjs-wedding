@@ -33,6 +33,8 @@ export function DisplayTile({
     const [link,setLink] = useState('');
     const [modal,setModal] = useState(false);
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [overlay, setOverlay] = useState(false);
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -49,15 +51,23 @@ export function DisplayTile({
         if(props.backgroundImage){
             setBackgroundImage(props.backgroundImage as string);
         }
+
+        if(props.overlay){
+            setOverlay(true);
+        }
     
     },[])
     function checkBGImage(){
         return  backgroundImage !== '' && backgroundImage
     }
+
+    function checkOverlay(){
+        return !overlay
+    }
     return (
         <div className="display-tile card-container">
             <div className="card" tabIndex={-1}>
-                <div className={clsx("card-padding","card-modifier",{'image' :checkBGImage})}>
+                <div className={clsx("card-padding","card-modifier",{'image' :checkBGImage()},{'overlay': checkOverlay()})}>
                     <div className="card-viewport-content">
                         <div className="card-content">
                             <div className="icon-container">
@@ -69,7 +79,7 @@ export function DisplayTile({
                         </div>
                         {
                             checkBGImage() &&
-                            <div className='card-image'>
+                            <div className={clsx('card-image',{'overlay' : overlay})}>
                                 <picture>
                                     <img src={backgroundImage}/>
                                 </picture>

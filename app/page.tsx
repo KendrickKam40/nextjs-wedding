@@ -24,22 +24,11 @@ const tilesBig =[
     subtext: "Jalan Kebo Iwa Jalan Batu Tampih Kangin No.Banjar, Pangkung Tibah, Kec. Kediri, Kabupaten Tabanan, Bali 82115, Indonesia",
     additional: <iframe className="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.9881309356074!2d115.07215427481462!3d-8.59713699144796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd237e42039c041%3A0xf49d98cfe326dcdb!2sVilla%20Vedas%20Bali!5e0!3m2!1sen!2sau!4v1724977215080!5m2!1sen!2sau" width="100%" height="200px" loading="lazy"></iframe>,
     link:"https://maps.app.goo.gl/GXDFhYLmsfFwwApB9",
+    backgroundImage:"/IMG_0008.JPG",
+    overlay: true,
     modal: false,
   }
   ,
-]
-
-const tiles = [
-  {
-    icon:<CalendarMonthIcon/>,
-    title: "Save the date",
-    content:"28th July 2025",
-    subtext:"",
-    additional: null,
-    link:"/CalanderInvite.ics",
-    modal: false,
-  },
-  
   {
     icon:null,
     title: null,
@@ -52,7 +41,39 @@ const tiles = [
       </div>
     </>,
     backgroundImage:"/locationTile.avif",
+    overlay: true,
     link:"",
+    modal: false,
+  }
+]
+
+const tiles = [
+  {
+    icon:<CalendarMonthIcon/>,
+    title: "Save the date",
+    content:"28th July 2025",
+    subtext:"",
+    additional: null,
+    link:"/CalanderInvite.ics",
+    backgroundImage:'/ABSTRACT_1.avif',
+    overlay: false,
+    modal: false,
+  },
+  
+  {
+    icon:null,
+    title: null,
+    content: null,
+    subtext: null,
+    additional: <>
+      <div className="flex-col center-flex">
+        <h3 className="typography-card-headline backgroundImg">Dress code</h3>
+        <p className="typography-family-paragraph backgroundImg">Formal</p>
+      </div>
+    </>,
+    backgroundImage:"/DressCode.jpg",
+    link:"",
+    overlay: true,
     modal: false,
   }
   ,
@@ -63,6 +84,8 @@ const tiles = [
     subtext: "The Dots App",
     additional: null,
     link:"",
+    backgroundImage:'/ABSTRACT_2.avif',
+    overlay: false,
     modal: true,
   }
 ]
@@ -136,6 +159,7 @@ export default function Home() {
                           link={tile.link}
                           modal={tile.modal}
                           backgroundImage={tile.backgroundImage}
+                          overlay={tile?.overlay}
                           >
                             <h3 className="typography-card-headline">{tile.title}</h3>
                             <p className="typography-family-paragraph">
@@ -154,7 +178,7 @@ export default function Home() {
                       })
                     }
                     </div>
-                    <div className="card-set">
+                    <div className="card-set col-2">
                       {
                         tilesBig.map((tile)=>{
                           return <>
@@ -162,6 +186,8 @@ export default function Home() {
                               Icon={tile.icon}
                               link={tile.link}
                               modal={tile.modal}
+                              backgroundImage={tile.backgroundImage}
+                              overlay={tile.overlay}
                               >
                                 <h3 className="typography-card-headline">{tile.title}</h3>
                                 <p className="typography-family-paragraph">
