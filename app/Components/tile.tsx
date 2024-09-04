@@ -24,7 +24,7 @@ const style = {
     maxWidth: '400px',
     maxHeight: '80vh',
     height: '100%',
-    width: '100%',
+    width: '80%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     overflow: 'scroll',
