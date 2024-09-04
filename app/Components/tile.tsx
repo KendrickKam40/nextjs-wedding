@@ -7,7 +7,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // modal
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 
 interface ModalContent {
     title?: string;
@@ -22,14 +21,16 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '400px',
-    maxHeight: '80vh',
+    maxHeight: '90%',
+    overflowY: "scroll",
     height: '100%',
     width: '80%',
     bgcolor: 'background.paper',
     border: '2px solid #000',
-    overflow: 'scroll',
     boxShadow: 24,
-    p: 4,
+    pt: 2,
+    px: 4,
+    pb: 3,
   };
   
 
@@ -121,10 +122,8 @@ export function DisplayTile({
                     <Modal
                     open={open}
                     onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
                     >
-                        <Box sx={style}>
+                        <Box className="modalBox"  sx={style}>
                             <div className='modal-content'>
                             {modalContent && modalContent.map((content, index) => (
                                     <div key={index}>
