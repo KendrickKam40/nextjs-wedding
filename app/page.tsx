@@ -157,65 +157,65 @@ const tilesBig = [
     link:"",
     modal: false,
     modalContent: null,
-  }
+  },
 ]
 
-const tilesInfo = [
-  {
-    key: 'accomodation',
-    icon:<HotelIcon/>,
-    title: "Nearby Accomodation",
-    content: "",
-    subtext: "",
-    additional: "",
-    link:"",
-    backgroundImage:"/villa.jpg",
-    overlay: true,
-    modal: true,
-    modalContent: nearbyAccommodations,
-  }
-  ,
-  {
-    key: 'travel',
-    icon:<AirportShuttleIcon/>,
-    title: "Group Travel",
-    content: "",
-    subtext: "",
-    additional: null,
-    link:"",
-    backgroundImage:"/traffic.jpg",
-    overlay: true,
-    modal: true,
-    modalContent: groupTravelOptions,
-  }
-  ,
-  {
-    key: 'weather',
-    icon:<WbSunnyIcon/>,
-    title: "Weather",
-    content: "",
-    subtext: "",
-    additional: <>
-      <div className="weather-content">
-        <div className="temp-container">
-          <h1 className="title">29°C</h1>
-          <p className="subtext">L: 22°C</p>
-        </div>
-        <div className="text-container">
-          <p className="typography-family-paragraph">Expect high heat & humidity with an average 10 hours of sunshine per day.</p>
-          <br/>
-          <p className="typography-family-subtext">July is tied with August for the least amount of average rainfall per month, at just 40mm</p>
-        </div>
-      </div>
-    </>,
-    link:"",
-    backgroundImage:"/weather.jpg",
-    overlay: true,
-    modal: false,
-    modalContent: null,
-  }
-  ,
-]
+//const tilesInfo = [
+  // {
+  //   key: 'accomodation',
+  //   icon:<HotelIcon/>,
+  //   title: "Nearby Accomodation",
+  //   content: "",
+  //   subtext: "",
+  //   additional: "",
+  //   link:"",
+  //   backgroundImage:"/villa.jpg",
+  //   overlay: true,
+  //   modal: true,
+  //   modalContent: nearbyAccommodations,
+  // }
+  // ,
+  // {
+  //   key: 'travel',
+  //   icon:<AirportShuttleIcon/>,
+  //   title: "Group Travel",
+  //   content: "",
+  //   subtext: "",
+  //   additional: null,
+  //   link:"",
+  //   backgroundImage:"/traffic.jpg",
+  //   overlay: true,
+  //   modal: true,
+  //   modalContent: groupTravelOptions,
+  // }
+  // ,
+  // {
+  //   key: 'weather',
+  //   icon:<WbSunnyIcon/>,
+  //   title: "Weather",
+  //   content: "",
+  //   subtext: "",
+  //   additional: <>
+  //     <div className="weather-content">
+  //       <div className="temp-container">
+  //         <h1 className="title">29°C</h1>
+  //         <p className="subtext">L: 22°C</p>
+  //       </div>
+  //       <div className="text-container">
+  //         <p className="typography-family-paragraph">Expect high heat & humidity with an average 10 hours of sunshine per day.</p>
+  //         <br/>
+  //         <p className="typography-family-subtext">July is tied with August for the least amount of average rainfall per month, at just 40mm</p>
+  //       </div>
+  //     </div>
+  //   </>,
+  //   link:"",
+  //   backgroundImage:"/weather.jpg",
+  //   overlay: true,
+  //   modal: false,
+  //   modalContent: null,
+  // }
+  // ,
+//]
 
 const tiles = [
   {
@@ -271,7 +271,8 @@ const tiles = [
       image: '/IMG_5458.JPG',
       alt: 'DotsQRCode',
     }]
-  }
+  },
+  
 ]
 
 
@@ -387,7 +388,7 @@ export default function Home() {
                       }
                     </div>
 
-                    <div className="card-set">
+                    {/* <div className="card-set">
                       {
                         tilesInfo.map( (tile) =>
                               <DisplayTile
@@ -412,7 +413,7 @@ export default function Home() {
                               </DisplayTile>
                         )
                       }
-                    </div>
+                    </div> */}
                       
                     </div>
                   </section>
