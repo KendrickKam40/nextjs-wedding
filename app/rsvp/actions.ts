@@ -2,6 +2,19 @@
 
 import { sql } from '@vercel/postgres';
 
+interface Guest{
+    id : number,
+    name: string,
+    email: string,
+    confirmed: boolean,
+    manager: boolean,
+    rsvpdate: any,
+    notes: string
+}
+
+function isGuest(obj : unknown): obj is Guest{
+    return true;
+}
 
 export async function getDataByEmail(email : any){
     if(email){
@@ -31,17 +44,18 @@ export async function getDataByName(name : any){
             const {rows, fields} = await sql`SELECT * FROM guests WHERE LOWER(name)=${lowerCasedName}`;
 
             if(rows.length > 0){
-                return  rows[0];
+                const guestRecord = rows[0];
+                return  isGuest(guestRecord) ? guestRecord : null;
             }
 
-            return {}
+            return null
         }catch(error){
             console.error(error)
-            return {}
+            return null
         }
     }
 
-    return {}
+    return null
 }
 
 

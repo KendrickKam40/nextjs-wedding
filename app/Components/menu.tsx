@@ -40,7 +40,6 @@ export default function MenuBar({...props}){
 
     const logout = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
-        props.setLoading(true);
         if(magic){
             magic.user.logout().then(() => {
                 setUser({ user: null });

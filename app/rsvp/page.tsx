@@ -11,11 +11,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { updateEmail,getDataByName,checkEmailExists} from "./actions";
 import { validateEmail } from "@/app/lib/validation";
 
-import Snackbar,  { SnackbarOrigin } from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import { error } from "console";
 
-interface State extends SnackbarOrigin {
-    open: boolean;
-}
 
 interface Guest{
     id : number,
@@ -45,27 +43,7 @@ export default function Page() {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [state, setState] = useState<State>({
-        open: false,
-        vertical: 'top',
-        horizontal: 'center',
-    });
 
-    const { vertical, horizontal, open } = state;
-
-    const handleOpen = (newState: SnackbarOrigin) => () => {
-        setState({ ...newState, open: true });
-    };
-
-    const handleClose = () => {
-        setState({ ...state, open: false });
-    };
-
-    useEffect(()=>{
-        if(errors.length > 0){
-            setState({ ...state, open: true });
-        }
-    },[errors])
 
     useEffect(() => {
         user?.issuer && router.push(`/`);
@@ -138,16 +116,42 @@ export default function Page() {
 
     async function handleName(e :any){
         setIsLoading(true);
-        setName(e.target.value as string);
         setFoundName(false);
+        setErrors([]);
 
-        const userData = await getDataByName(e.target.value);
-//        setIsLoading(false);
-        if(Object.keys(userData).length > 0){
-            await setComponentStates(userData as Guest);
+        let name = e.target.value as string;
+        
+        // set name variable
+        setName(name);
+
+        // fetch user data associated with name
+        if(name !== ""){
+            fetchData(name);
         }else{
             setIsLoading(false);
         }
+    
+    }
+
+
+    const fetchData = async (name : string)=>{
+        // fetch data by name
+
+        try{
+            const req = await getDataByName(name);
+            if(req !== null){
+                setComponentStates(req as Guest);
+            }else{
+                console.error('error retrieving data');
+                setErrors(['Name not found!'])
+                setIsLoading(false);
+            }
+        }catch(e){
+            console.error(e);
+            setErrors(['Name not found!'])
+            setIsLoading(false);
+        }
+
     }
 
     function setComponentStates(userData : Guest){
@@ -177,7 +181,10 @@ export default function Page() {
 
     return (
         <>  
+         
+           
             <div className="rsvpContainer">
+           
              <div className="cardContainer">
                     <div className="formBody">
 
@@ -251,14 +258,23 @@ export default function Page() {
                     </div>
                 
             </div>
+            {
+                errors.length > 0 && <>
+                     <div className="alert-container">
+                            <Alert severity="error">
+                                {
+                                errors.map((err)=>{
+                                    return <>
+                                        <p>{err}</p>
+                                    </>
+                                })
+                                }
+                            </Alert>
+                    </div>
+                </>
+            }
         </div> 
-        <Snackbar
-            anchorOrigin={{ vertical, horizontal }}
-            open={open}
-            onClose={handleClose}
-            message={errors.length > 0 ? errors[0] as string : ''}
-            key={vertical + horizontal}
-        />
+       
         </>
          
        

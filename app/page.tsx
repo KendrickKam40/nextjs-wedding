@@ -315,7 +315,8 @@ export default function Home() {
             }
           {userId && (
                   <>
-                  <MenuBar/>
+                  <MenuBar
+                  />
 
                   <section className="banner-section">
                     <Banner
