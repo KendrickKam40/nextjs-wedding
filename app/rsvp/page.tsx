@@ -42,6 +42,7 @@ export default function Page() {
     const [name, setName] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
 
 
 
@@ -52,6 +53,8 @@ export default function Page() {
     
       const handleLogin = async (e : any) => {
         e.preventDefault();
+
+        setIsLoggingIn(true);
 
         if(foundEmail && foundName){
             try {
@@ -68,6 +71,8 @@ export default function Page() {
                         Authorization: `Bearer ${didToken}`,
                     },
                     });
+
+                    console.log(res)
                     
                     const reponseJson = await res.json()
     
@@ -76,17 +81,26 @@ export default function Page() {
 
                         setUser(userMetadata);
                         router.push("/");
+                    }else{
+                        setErrors(["There has been an error logging you in, please contact support"]);
+                        setIsLoggingIn(false);
                     }
               
-                }  
+                }else{
+                    setErrors(["There has been an error logging you in, please contact support"]);
+                    setIsLoggingIn(false);
+                }
             } catch (error) {
                 console.error(error);
+                setIsLoggingIn(false);
             }
+
               
           
               
         }else{
             setErrors(["An error has occured, please contact support"])
+            setIsLoggingIn(false);
         }
       };
 
@@ -117,6 +131,8 @@ export default function Page() {
     async function handleName(e :any){
         setIsLoading(true);
         setFoundName(false);
+        setEmail('');
+        setFoundEmail(false);
         setErrors([]);
 
         let name = e.target.value as string;
@@ -129,6 +145,7 @@ export default function Page() {
             fetchData(name);
         }else{
             setIsLoading(false);
+            setErrors(["Please enter a name to continue"])
         }
     
     }
@@ -191,7 +208,7 @@ export default function Page() {
 
                         <form onSubmit={handleLogin}>
                             <div className="form-instructions">
-                                <h1 className="typography-card-headline">Enter your name to continue</h1>
+                                <h1 className="typography-card-headline">Enter your first name</h1>
                                 <p className="typography-family-subtext">If your name is not found, please contact the system administrator</p>
                             </div>
                             <div className="formText">
@@ -201,7 +218,7 @@ export default function Page() {
                                 className={clsx("inputText",{'inputTextEntered' : name} )}
                                 value={name}
                                 onChange={handleName}/>
-                                <span className="formTextLabel">Name</span>
+                                <span className="formTextLabel">First Name</span>
                               
                                 {
                                     foundName && !isLoading && 

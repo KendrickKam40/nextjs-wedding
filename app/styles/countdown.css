@@ -1,0 +1,23 @@
+.counter-container{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: space-between;
+    
+    width: 100%;
+}
+
+.counter-number{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.counter-unit{
+    text-align: center;
+    font-size: 8px;
+}
+
+.counter-unit p{
+    margin: 0;
+    padding: 0;
+}

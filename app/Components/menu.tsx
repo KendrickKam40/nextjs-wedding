@@ -15,6 +15,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Chip from '@mui/material/Chip';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import Countdown from './countDown';
 
 export default function MenuBar({...props}){
     const [user, setUser] = useContext<any>(UserContext);
@@ -91,9 +92,16 @@ export default function MenuBar({...props}){
                         <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
                     }
                 </div>
-               
+            </div>
+            <div>
+
             </div>
             <div className='menu-actions'>
+                <div className='countdown-timer'>
+                    <Countdown targetDate="2025-07-28"/>
+                </div>
+            
+
             <IconButton
                 aria-label="more"
                 id="long-button"

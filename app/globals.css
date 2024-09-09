@@ -63,7 +63,19 @@ section{
   .typography-section-headline {
     font-size: 60px;
   }
+
+  .countdown-timer-mobile{
+    display: block !important;
+  }
 }
+
+.countdown-timer-mobile{
+  display: none;
+  max-width: 80%;
+  width: 100%;
+  margin: auto;
+}
+
 
 .typography-card-headline{
   font-size: 28px;
@@ -71,6 +83,7 @@ section{
   font-weight: 600;
   letter-spacing: .007em;
 }
+
 
 .typography-section-eyebrow {
   font-size: 24px;

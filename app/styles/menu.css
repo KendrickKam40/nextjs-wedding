@@ -36,6 +36,10 @@ p.typography-family-paragraph{
         font-weight: 700;
         font-size: 14px;
     }
+
+    .countdown-timer{
+        display: none;
+    }
   }
 
 
@@ -53,6 +57,13 @@ p.typography-family-paragraph{
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .banner-section {
+.sticky + section {
     padding-top: 80px;
 }
+
+.menu-actions{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+

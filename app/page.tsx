@@ -18,6 +18,7 @@ import { DisplayTile } from "./Components/tile";
 import MenuBar from "./Components/menu";
 import { getDataByEmail } from "./actions";
 import LoadingSpinner from "./Components/loader";
+import Countdown from "./Components/countDown";
 
 const groupTravelOptions = [
   {
@@ -317,7 +318,11 @@ export default function Home() {
                   <>
                   <MenuBar
                   />
-
+                  <section>
+                    <div className='countdown-timer-mobile'>
+                      <Countdown targetDate="2025-07-28"/>
+                    </div>
+                  </section>
                   <section className="banner-section">
                     <Banner
                     backgroundImage="/bannerImage.jpg">
@@ -329,6 +334,7 @@ export default function Home() {
                         userId && 
                         <button type="submit" className="submitButton alt" onClick={handleRSVP} >RSVP</button>
                       }
+                    
                     </Banner>
                   </section>
                   
