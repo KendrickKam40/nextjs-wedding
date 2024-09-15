@@ -140,7 +140,7 @@ export default function Page() {
       
 
     async function handleName(e :any){
-        const nameInput = e.target.value.trim();
+        const nameInput = e.target.value;
         setName(nameInput);
         setIsLoading(true);
         setFoundName(false);
