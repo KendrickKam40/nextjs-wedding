@@ -53,7 +53,7 @@ export default function Page() {
     }, [user]);
 
     
-      const handleLogin = async (e : any) => {
+    const handleLogin = async (e : any) => {
         e.preventDefault();
 
         setIsLoggingIn(true);
@@ -107,25 +107,51 @@ export default function Page() {
        
     }
 
+    useEffect(() => {
+        if (name === "") return; // Do nothing if the name is empty
+      
+        const delayDebounceFn = setTimeout(() => {
+          // Function to fetch data after debounce
+          const fetchDataAfterDebounce = async () => {
+            try {
+              const uData = await getDataByName(name);
+              if (uData !== null) {
+                setComponentStates(uData as Guest);
+                setErrors([]);
+              } else {
+                setErrors(['Name not found!']);
+                setFoundName(false);
+              }
+            } catch (e) {
+              console.error(e);
+              setErrors(['An error has occurred while fetching user data']);
+              setFoundName(false);
+            } finally {
+              setIsLoading(false);
+            }
+          };
+      
+          fetchDataAfterDebounce();
+        }, 500); // 500ms debounce delay
+      
+        // Cleanup function to cancel the timeout if name changes before delay
+        return () => clearTimeout(delayDebounceFn);
+      }, [name]);
+      
+
     async function handleName(e :any){
+        const nameInput = e.target.value.trim();
+        setName(nameInput);
         setIsLoading(true);
         setFoundName(false);
         setEmail('');
         setFoundEmail(false);
         setErrors([]);
 
-        let nameInput = e.target.value as string;
-        
-        // set name variable
-        setName(nameInput);
-
-        // fetch user data associated with name
-        if(nameInput !== ""){
-            await fetchData(nameInput);
-        }else{
+        if (nameInput === "") {
             setIsLoading(false);
-            setErrors(["Please enter a name to continue"])
-        }
+            setErrors(["Please enter a name to continue"]);
+          }
     
     }
 
