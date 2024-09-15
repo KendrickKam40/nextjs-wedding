@@ -8,6 +8,13 @@
     height: 100%;
   }
   
+.card .typography-card-headline{
+  margin-bottom: 0.1em;
+}
+
+.card .typography-family-paragraph{
+  margin-bottom: 1em
+}
   .card .card-padding.card-modifier{
     padding-inline-end: 77px;
     padding-bottom: 57px;

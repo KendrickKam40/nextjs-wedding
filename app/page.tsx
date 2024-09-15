@@ -134,7 +134,7 @@ const tilesBig = [
     title: "Where?",
     content: "Villa Vedas, Bali",
     subtext: "Jalan Kebo Iwa Jalan Batu Tampih Kangin No.Banjar, Pangkung Tibah, Kec. Kediri, Kabupaten Tabanan, Bali 82115, Indonesia",
-    additional: <iframe className="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.9881309356074!2d115.07215427481462!3d-8.59713699144796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd237e42039c041%3A0xf49d98cfe326dcdb!2sVilla%20Vedas%20Bali!5e0!3m2!1sen!2sau!4v1724977215080!5m2!1sen!2sau" width="100%" height="200px" loading="lazy"></iframe>,
+    additional: <iframe className="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.9881309356074!2d115.07215427481462!3d-8.59713699144796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd237e42039c041%3A0xf49d98cfe326dcdb!2sVilla%20Vedas%20Bali!5e0!3m2!1sen!2sau!4v1724977215080!5m2!1sen!2sau" width="100%" height="200px"></iframe>,
     link:"https://maps.app.goo.gl/GXDFhYLmsfFwwApB9",
     backgroundImage:"/IMG_0008.JPG",
     overlay: true,
@@ -162,62 +162,62 @@ const tilesBig = [
   },
 ]
 
-//const tilesInfo = [
-  // {
-  //   key: 'accomodation',
-  //   icon:<HotelIcon/>,
-  //   title: "Nearby Accomodation",
-  //   content: "",
-  //   subtext: "",
-  //   additional: "",
-  //   link:"",
-  //   backgroundImage:"/villa.jpg",
-  //   overlay: true,
-  //   modal: true,
-  //   modalContent: nearbyAccommodations,
-  // }
-  // ,
-  // {
-  //   key: 'travel',
-  //   icon:<AirportShuttleIcon/>,
-  //   title: "Group Travel",
-  //   content: "",
-  //   subtext: "",
-  //   additional: null,
-  //   link:"",
-  //   backgroundImage:"/traffic.jpg",
-  //   overlay: true,
-  //   modal: true,
-  //   modalContent: groupTravelOptions,
-  // }
-  // ,
-  // {
-  //   key: 'weather',
-  //   icon:<WbSunnyIcon/>,
-  //   title: "Weather",
-  //   content: "",
-  //   subtext: "",
-  //   additional: <>
-  //     <div className="weather-content">
-  //       <div className="temp-container">
-  //         <h1 className="title">29°C</h1>
-  //         <p className="subtext">L: 22°C</p>
-  //       </div>
-  //       <div className="text-container">
-  //         <p className="typography-family-paragraph">Expect high heat & humidity with an average 10 hours of sunshine per day.</p>
-  //         <br/>
-  //         <p className="typography-family-subtext">July is tied with August for the least amount of average rainfall per month, at just 40mm</p>
-  //       </div>
-  //     </div>
-  //   </>,
-  //   link:"",
-  //   backgroundImage:"/weather.jpg",
-  //   overlay: true,
-  //   modal: false,
-  //   modalContent: null,
-  // }
-  // ,
-//]
+const tilesInfo = [
+  {
+    key: 'accomodation',
+    icon:<HotelIcon/>,
+    title: "Nearby Accomodation",
+    content: "",
+    subtext: "",
+    additional: "",
+    link:"",
+    backgroundImage:"/villa.jpg",
+    overlay: true,
+    modal: true,
+    modalContent: nearbyAccommodations,
+  }
+  ,
+  {
+    key: 'travel',
+    icon:<AirportShuttleIcon/>,
+    title: "Group Travel",
+    content: "",
+    subtext: "",
+    additional: null,
+    link:"",
+    backgroundImage:"/traffic.jpg",
+    overlay: true,
+    modal: true,
+    modalContent: groupTravelOptions,
+  }
+  ,
+  {
+    key: 'weather',
+    icon:<WbSunnyIcon/>,
+    title: "Weather",
+    content: "",
+    subtext: "",
+    additional: <>
+      <div className="weather-content">
+        <div className="temp-container">
+          <h1 className="title">29°C</h1>
+          <p className="subtext">L: 22°C</p>
+        </div>
+        <div className="text-container">
+          <p className="typography-family-paragraph">Expect high heat & humidity with an average 10 hours of sunshine per day.</p>
+          <br/>
+          <p className="typography-family-subtext">July is tied with August for the least amount of average rainfall per month, at just 40mm</p>
+        </div>
+      </div>
+    </>,
+    link:"",
+    backgroundImage:"/weather.jpg",
+    overlay: true,
+    modal: false,
+    modalContent: null,
+  }
+  ,
+]
 
 const tiles = [
   {
@@ -225,7 +225,7 @@ const tiles = [
     icon:<CalendarMonthIcon/>,
     title: "Save the date",
     content:"28th July 2025",
-    subtext:"",
+    subtext:"We will be in Bali on the 24th July till 2nd August!",
     additional: null,
     link:"/CalanderInvite.ics",
     backgroundImage:'/saveTheDate.png',
@@ -258,10 +258,10 @@ const tiles = [
     icon:<FiberManualRecordIcon/>,
     title: "Share your photos with us!",
     content: "The Dots App",
-    subtext: "",
+    subtext: "Download the dots app to add your photos to a shared album",
     additional: null,
     link:"",
-    backgroundImage:'/dots.webp',
+    backgroundImage:'/lens.jpg',
     overlay: true,
     modal: true,
     modalContent:[{
@@ -406,7 +406,7 @@ export default function Home() {
                       }
                     </div>
 
-                    {/* <div className="card-set">
+                    <div className="card-set">
                       {
                         tilesInfo.map( (tile) =>
                               <DisplayTile
@@ -431,7 +431,7 @@ export default function Home() {
                               </DisplayTile>
                         )
                       }
-                    </div> */}
+                    </div>
                       
                     </div>
                   </section>

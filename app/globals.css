@@ -101,7 +101,7 @@ section{
 }
 
 .typography-family-subtext{
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1;
   font-weight: 300;
   letter-spacing: -0.022em;
@@ -115,10 +115,6 @@ section{
   letter-spacing: -0.022em;
   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
   color:#FFF;
-}
-
-h1+*, h2+*, h3+*, h4+*, h5+*, h6+*{
-  margin-top: 0.8em;
 }
 
 .typography-family-paragraph p{
