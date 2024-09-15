@@ -15,29 +15,42 @@ import Chip from '@mui/material/Chip';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import Countdown from './countDown';
+import Skeleton from '@mui/material/Skeleton';
+
 
 export default function MenuBar({...props}){
-    const { user, login, logout } = useAuth();  // Now we use login from AuthContext
-
+    const { user, logout } = useAuth();  // Now we use login from AuthContext
+    const [isLoading, setIsLoading] = useState(true);
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
 
 
     useEffect(()=>{
         async function getData(){
-          if(user?.email){
-            const uData = await getDataByEmail(user.email);
-            
-            if(uData){
-              
-              setUserData(uData);        
+            try{
+                if(user?.email){
+                    const uData = await getDataByEmail(user.email);
+                    
+                    if(uData){
+                      
+                      setUserData(uData);        
+                    }
+                  }
+            }catch(err){
+                console.error("An error has occured retrieiving user data");
+            }finally{
+                // setIsLoading(false)
             }
-          }
-         
         }
     
         getData();
       },[user]);
+    
+    useEffect(()=>{
+        if(userData.name){
+            setIsLoading(false);
+        }
+    },[userData])
 
     const logoutMenuButton = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
@@ -74,22 +87,22 @@ export default function MenuBar({...props}){
        <>
         <section className='menu-section'>
             <div className='menu-card'>
-            <div className='menu-content'>
-                <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
-                <div className='status'>
-                    {
-                        userData?.confirmed &&
-                        <Chip label="CONFIRMED" icon={<CelebrationIcon />} color="success"/>
-                    }
-                    {
-                        !userData?.confirmed &&
-                        <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
-                    }
-                </div>
-            </div>
-            <div>
-
-            </div>
+                {
+                    isLoading ? <Skeleton width={100} /> :
+                    <div className='menu-content'>
+                        <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
+                        <div className='status'>
+                            {
+                                userData?.confirmed &&
+                                <Chip label="CONFIRMED" icon={<CelebrationIcon />} color="success"/>
+                            }
+                            {
+                                !userData?.confirmed &&
+                                <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
+                            }
+                        </div>
+                    </div>
+                }
             <div className='menu-actions'>
                 <div className='countdown-timer'>
                     <Countdown targetDate="2025-07-28"/>
