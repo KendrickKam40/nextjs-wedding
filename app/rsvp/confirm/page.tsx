@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/AuthContext';
 import { getDataByEmail } from '@/app/actions';
+import LoadingSpinner from '@/app/Components/loader';
 
 export default function Page() {
 
@@ -13,6 +14,7 @@ export default function Page() {
     const [userId,setUserId] = useState();
     const {user} = useAuth();
 
+    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter();
 
@@ -31,9 +33,7 @@ export default function Page() {
             }
         }catch(err){
             console.error('error loading user')
-        }finally{
         }
-        
         }
         getData();
     },[user]);
@@ -42,12 +42,18 @@ export default function Page() {
     useEffect(()=>{
         const setupData = async ()=>{
              // get user data
-            const refUser = await getData(userId);
-            const partyName = refUser.party;
-
-            //get party members
-            const partyGuests= await getDataByParty(partyName);
-            setGuests(partyGuests);
+             try{
+                const refUser = await getData(userId);
+                const partyName = refUser.party;
+    
+                //get party members
+                const partyGuests= await getDataByParty(partyName);
+                setGuests(partyGuests);
+             }catch(e){
+                console.error("error getting guests");
+             }finally{
+                setIsLoading(false);
+             }
          
         }
 
@@ -72,6 +78,7 @@ export default function Page() {
      }
 
     async function handleRSVP() {
+        setIsLoading(true);
         try {
             for (const guest of guests) {
                 await saveData(guest);
@@ -81,6 +88,8 @@ export default function Page() {
         } catch (error) {
             console.error('Error saving RSVPs:', error);
             alert('There was an error saving the RSVPs. Please try again.');
+        }finally{
+            setIsLoading(false);
         }
     }
 
@@ -92,22 +101,28 @@ export default function Page() {
         <div className="rsvpContainer">
              <div className="cardContainer">
                 <div className="formBody">
-                    <div className="attending-guests">
                     {
-                        guests.map((guest : any)=>(
-                                    <Confirmation 
-                                    key={guest.id}
-                                    guestData={guest}
-                                    onToggleConfirmed={handleCheckedGuest}
-                                    onEmailChange={handleChangeEmail}
-                                    />
-                        ))
+                        isLoading ? <span className="loading-container"><LoadingSpinner/></span> :
+                        <>
+                         <div className="attending-guests">
+                        {
+                            guests.map((guest : any)=>(
+                                        <Confirmation 
+                                        key={guest.id}
+                                        guestData={guest}
+                                        onToggleConfirmed={handleCheckedGuest}
+                                        onEmailChange={handleChangeEmail}
+                                        />
+                            ))
+                        }
+                        </div>
+                        <div className='form-footer'>
+                            <button className="backButton" onClick={handleBack}>Back</button>
+                            <button className="submitButton" onClick={handleRSVP}>Save</button>
+                        </div>
+                        </>
                     }
-                    </div>
-                    <div className='form-footer'>
-                        <button className="backButton" onClick={handleBack}>Back</button>
-                        <button className="submitButton" onClick={handleRSVP}>Save</button>
-                    </div>
+                   
                     
                 </div>
         
