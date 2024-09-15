@@ -28,9 +28,9 @@ p.typography-family-paragraph{
 }
 
 @media (max-width: 600px) {
-    .status{
+    /* .status{
         display: none;
-    }
+    } */
 
     p.typography-family-paragraph{
         font-weight: 700;
