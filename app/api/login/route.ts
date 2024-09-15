@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     };
 
     // Sign the JWT token using the secret
-    const token = jwt.sign(payload, secret, { expiresIn: '1h' });
+    const token = jwt.sign(payload, secret, { expiresIn: '730h' });
 
     // Send the token back to the client
     return NextResponse.json({ token }, {status:200});
