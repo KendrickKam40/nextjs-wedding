@@ -291,14 +291,20 @@ export default function Home() {
     async function getData(){
 
       console.log('user',user)
-      if(user?.email){
-        const uData = await getDataByEmail(user.email);
-        
-        if(uData){
-          setUserId(uData.id);        
+      try{
+        if(user?.email){
+          const uData = await getDataByEmail(user.email);
+          
+          if(uData){
+            setUserId(uData.id);        
+          }
         }
+      }catch(err){
+        console.error('error loading user')
+      }finally{
         setIsLoading(false);
       }
+      
     }
     getData();
   },[user]);
