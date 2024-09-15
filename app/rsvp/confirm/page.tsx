@@ -101,9 +101,14 @@ export default function Page() {
         <div className="rsvpContainer">
              <div className="cardContainer">
                 <div className="formBody">
+                    <div className="form-instructions">
+                        <h1 className="typography-card-headline">Let us know who is coming!</h1>
+                        <p className="typography-family-subtext">Select the guests that are coming to the wedding. Add any dietary notes or other requests.</p>
+                    </div>
                     {
                         isLoading ? <span className="loading-container"><LoadingSpinner/></span> :
                         <>
+                        
                          <div className="attending-guests">
                         {
                             guests.map((guest : any)=>(
