@@ -4,7 +4,6 @@ import '@/app/styles/form.css';
 import clsx from 'clsx';
 import { useRouter } from "next/navigation";
 import { magic } from "@/app/lib/magic";
-import { UserContext } from "@/app/contextProvider";
 
 import LoadingSpinner from "@/app/Components/loader";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -13,6 +12,7 @@ import { validateEmail } from "@/app/lib/validation";
 
 import Alert from '@mui/material/Alert';
 import { error } from "console";
+import { useAuth } from "@/app/AuthContext";
 
 
 interface Guest{
@@ -26,7 +26,8 @@ interface Guest{
 }
   
 export default function Page() {
-    const [user, setUser] = useContext<any>(UserContext);
+    const { user, login } = useAuth();  // Now we use login from AuthContext
+
 
     const [email, setEmail] = useState("");
 
@@ -44,11 +45,12 @@ export default function Page() {
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-
-
+    // If the user is already logged in, redirect to home
     useEffect(() => {
-        user?.issuer && router.push(`/`);
-      }, [user]);
+        if (user) {
+            router.push(`/`);
+        }
+    }, [user]);
 
     
       const handleLogin = async (e : any) => {
@@ -58,51 +60,28 @@ export default function Page() {
 
         if(foundEmail && foundName){
             try {
-                const emailUpdate = await updateEmail(name , email);
+                // Update email in the backend if necessary
+                await updateEmail(name, email);
 
-                if(magic){
-                    const didToken = await magic.auth.loginWithEmailOTP({
-                        email
-                    });
-                    const res = await fetch("/api/loginTo", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json",
-                        Authorization: `Bearer ${didToken}`,
-                    },
-                    });
+                // Call login from AuthContext
+                const success = await login(email, name);  // No need for direct magic calls
 
-                    console.log(res)
-                    
-                    const reponseJson = await res.json()
-    
-                    if (res.ok) {
-                        const userMetadata = await magic?.user.getMetadata();
-
-                        setUser(userMetadata);
-                        router.push("/");
-                    }else{
-                        setErrors(["There has been an error logging you in, please contact support"]);
-                        setIsLoggingIn(false);
-                    }
-              
-                }else{
-                    setErrors(["There has been an error logging you in, please contact support"]);
-                    setIsLoggingIn(false);
+                if (success) {
+                    router.push('/');
+                } else {
+                    setErrors(['There has been an error logging you in, please contact support']);
                 }
+
             } catch (error) {
                 console.error(error);
+            }finally{
                 setIsLoggingIn(false);
-            }
-
-              
-          
-              
+            } 
         }else{
             setErrors(["An error has occured, please contact support"])
             setIsLoggingIn(false);
         }
-      };
+    };
 
    
 
@@ -135,14 +114,14 @@ export default function Page() {
         setFoundEmail(false);
         setErrors([]);
 
-        let name = e.target.value as string;
+        let nameInput = e.target.value as string;
         
         // set name variable
-        setName(name);
+        setName(nameInput);
 
         // fetch user data associated with name
-        if(name !== ""){
-            fetchData(name);
+        if(nameInput !== ""){
+            await fetchData(nameInput);
         }else{
             setIsLoading(false);
             setErrors(["Please enter a name to continue"])
@@ -159,42 +138,33 @@ export default function Page() {
             if(req !== null){
                 setComponentStates(req as Guest);
             }else{
-                console.error('error retrieving data');
                 setErrors(['Name not found!'])
-                setIsLoading(false);
             }
         }catch(e){
             console.error(e);
             setErrors(['Name not found!'])
+        } finally {
             setIsLoading(false);
         }
 
     }
 
-    function setComponentStates(userData : Guest){
-        console.log("Guest data:",userData)
-        if(userData.name && userData.name !== ""){
-            setFoundName(userData.name as string ? true : false)
-            setName(userData.name as string);
-        }else{
-            setFoundName(false)
+    const setComponentStates = (userData: Guest) => {
+        if (userData.name) {
+          setFoundName(true);
+          setName(userData.name);
+        } else {
+          setFoundName(false);
         }
-
-        if(userData.email && userData.email !== ""){
-
-            setEmail(userData.email as string);
-            
-            if(validateEmail(userData.email)){
-                setFoundEmail(true)
-            }
-        }else{
-            setFoundEmail(false)
-        }
-
-        setIsLoading(false);
-    }
     
-
+        if (userData.email && validateEmail(userData.email)) {
+          setEmail(userData.email);
+          setFoundEmail(true);
+        } else {
+          setFoundEmail(false);
+        }
+    };
+    
 
     return (
         <>  

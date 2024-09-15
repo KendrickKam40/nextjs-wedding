@@ -1,7 +1,8 @@
 'use client';
 import { useRouter } from "next/navigation";
-import { useContext, useEffect ,useState} from 'react';
-import { UserContext } from '@/app/contextProvider';
+import { useEffect ,useState} from 'react';
+// import { UserContext } from '@/app/contextProvider';
+import { useAuth } from '@/app/AuthContext';
 
 // Icons
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -278,13 +279,23 @@ const tiles = [
 
 
 export default function Home() {
-  const [user, setUser] = useContext<any>(UserContext);
+  // const [user, setUser] = useContext<any>(UserContext);
+  const {user} = useAuth();
+  const router = useRouter()
   const [userId,setUserId] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/rsvp');  // Redirect if no user is found
+    }
+  }, [user, router]);
 
 
   useEffect(()=>{
     async function getData(){
+
+      console.log('user',user)
       if(user?.email){
         const uData = await getDataByEmail(user.email);
         
@@ -299,7 +310,6 @@ export default function Home() {
 
 
 
-  const router = useRouter()
   function handleRSVP(){
     router.push(`/rsvp/${userId}`);
   }

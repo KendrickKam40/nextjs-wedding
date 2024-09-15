@@ -1,11 +1,10 @@
 'use client'
 
 import '@/app/styles/menu.css'
-import { useContext, useEffect, useState } from 'react'
-import { UserContext } from '@/app/contextProvider';
+import {useEffect, useState } from 'react'
 import { getDataByEmail } from '../actions';
-import { magic } from '@/app/lib/magic';
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/AuthContext";
 
 //MUI
 import IconButton from '@mui/material/IconButton';
@@ -18,7 +17,8 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import Countdown from './countDown';
 
 export default function MenuBar({...props}){
-    const [user, setUser] = useContext<any>(UserContext);
+    const { user, login, logout } = useAuth();  // Now we use login from AuthContext
+
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
 
@@ -39,15 +39,9 @@ export default function MenuBar({...props}){
         getData();
       },[user]);
 
-    const logout = () => {
+    const logoutMenuButton = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
-        if(magic){
-            magic.user.logout().then(() => {
-                setUser({ user: null });
-                //props.setLoading(false);
-                router.push('/rsvp');
-            });
-        }
+        logout();
     };
 
     // menu methods & vars
@@ -123,7 +117,7 @@ export default function MenuBar({...props}){
             >
                 {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                <MenuItem onClick={logout}>Logout</MenuItem>
+                <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
             </Menu>
 
             </div>
