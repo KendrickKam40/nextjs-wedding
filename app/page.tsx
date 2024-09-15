@@ -289,7 +289,7 @@ export default function Home() {
     if (!user) {
       router.push('/rsvp');  // Redirect if no user is found
     }
-  }, [user, router]);
+  }, []);
 
 
   useEffect(()=>{
