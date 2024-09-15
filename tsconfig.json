@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/rsvp/[id]/confirmation.js", "app/contextProvider.js", "app/lib/magic.js", "app/api/login/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/rsvp/confirm/confirmation.js", "app/contextProvider.js", "app/lib/magic.js", "app/api/login/route.js"],
   "exclude": ["node_modules"]
 }

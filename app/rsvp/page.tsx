@@ -48,7 +48,7 @@ export default function Page() {
     // If the user is already logged in, redirect to home
     useEffect(() => {
         if (user) {
-            router.push(`/`);
+            router.push(`/rsvp/confirm`);
         }
     }, [user]);
 
@@ -65,9 +65,9 @@ export default function Page() {
 
                 // Call login from AuthContext
                 const success = await login(email, name);  // No need for direct magic calls
-
+                console.log("success", success)
                 if (success) {
-                    router.push('/');
+                    router.push('/rsvp/confirm');
                 } else {
                     setErrors(['There has been an error logging you in, please contact support']);
                 }

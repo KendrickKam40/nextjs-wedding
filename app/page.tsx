@@ -312,7 +312,7 @@ export default function Home() {
 
 
   function handleRSVP(){
-    router.push(`/rsvp/${userId}`);
+    router.push('/rsvp/confirm');
   }
 
   return (

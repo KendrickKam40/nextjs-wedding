@@ -1,30 +1,59 @@
 'use client'
 import '@/app/styles/form.css';
-import Confirmation from '@/app/rsvp/[id]/confirmation';
-import { getData, getDataByParty, saveData } from '@/app/rsvp/[id]/actions';
+import Confirmation from '@/app/rsvp/confirm/confirmation';
+import { getData, getDataByParty, saveData } from '@/app/rsvp/confirm/actions';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import LoadingSpinner from '@/app/Components/loader';
-export default function Page({params} : {params : any}) {
+import { useAuth } from '@/app/AuthContext';
+import { getDataByEmail } from '@/app/actions';
+
+export default function Page() {
+
     const[guests , setGuests] = useState<any[]>([]);
+    const [userId,setUserId] = useState();
+    const {user} = useAuth();
+
 
     const router = useRouter();
 
+
+    useEffect(()=>{
+        async function getData(){
+
+        console.log('user',user)
+        try{
+            if(user?.email){
+            const uData = await getDataByEmail(user.email);
+            
+            if(uData){
+                setUserId(uData.id);        
+            }
+            }
+        }catch(err){
+            console.error('error loading user')
+        }finally{
+        }
+        
+        }
+        getData();
+    },[user]);
+
+    
     useEffect(()=>{
         const setupData = async ()=>{
              // get user data
-            const userId = params?.id
             const refUser = await getData(userId);
             const partyName = refUser.party;
 
             //get party members
             const partyGuests= await getDataByParty(partyName);
             setGuests(partyGuests);
+         
         }
 
         setupData();
 
-    },[])
+    },[userId])
    
     function handleCheckedGuest(userId : any, confirmed: boolean){
         setGuests((prevGuests:any) => 
