@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/app/AuthContext';
 import { getDataByEmail } from '@/app/actions';
 import LoadingSpinner from '@/app/Components/loader';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import SaveIcon from '@mui/icons-material/Save';
 
 export default function Page() {
 
@@ -122,8 +124,8 @@ export default function Page() {
                         }
                         </div>
                         <div className='form-footer'>
-                            <button className="backButton" onClick={handleBack}>Back</button>
-                            <button className="submitButton" onClick={handleRSVP}>Save</button>
+                            <button className="backButton" onClick={handleBack}><KeyboardBackspaceIcon/></button>
+                            <button className="submitButton" onClick={handleRSVP}><SaveIcon/> Save</button>
                         </div>
                         </>
                     }
