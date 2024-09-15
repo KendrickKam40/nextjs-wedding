@@ -29,6 +29,9 @@ export const AuthProvider = ({ children } : {children : ReactNode}) => {
     if (token) {
       const decoded = jwtDecode<User>(token);  // Decode token to User type
       setUser(decoded);  // Set user state with decoded token data
+      router.push("/");
+    }else{
+      router.push("/rsvp");
     }
   }, []);
 

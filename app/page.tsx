@@ -285,11 +285,6 @@ export default function Home() {
   const [userId,setUserId] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (!user) {
-      router.push('/rsvp');  // Redirect if no user is found
-    }
-  }, []);
 
 
   useEffect(()=>{
