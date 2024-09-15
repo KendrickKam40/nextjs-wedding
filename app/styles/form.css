@@ -121,6 +121,10 @@ h1{
   color: rgb(var(--secondary-rgb));
 }
 
+.formBody .typography-card-headline{
+  margin-bottom: 1em;
+}
+
 
 .input-icon{
   position: absolute;
