@@ -55,7 +55,7 @@ export default function Dashboard(){
             
             <div className="dashboard-container">
                 <div className="confirmed-guests-heading">
-                    <h1 className="typography-section-headline">Confirmed Guests</h1>
+                    <h1 className="typography-card-headline">Confirmed Guests</h1>
                     <TotalGuests/>
                 </div>
                 <TableConfirmed/>    

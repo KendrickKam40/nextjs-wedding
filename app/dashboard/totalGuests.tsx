@@ -22,7 +22,7 @@ export default function TotalGuests(){
 
     return(
         <div className="total-guests-container"> 
-            <p className="typography-section-eyebrow">Total Guests Confirmed: {confirmedGuests} out of {totalGuests}</p>
+            <p className="typography-family-paragraph">Total Guests Confirmed: {confirmedGuests} out of {totalGuests}</p>
         </div>
     )
 }
