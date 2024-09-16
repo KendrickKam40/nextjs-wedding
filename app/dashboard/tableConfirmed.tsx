@@ -79,11 +79,11 @@ export default function TableConfirmed(){
             <TableHead>
               <TableRow>
                 <TableCell><strong>ID</strong></TableCell>
-                <TableCell align="right"><strong>Name</strong></TableCell>
-                <TableCell align="right"><strong>Email</strong></TableCell>
-                <TableCell align="right"><strong>Confirmed</strong></TableCell>
-                <TableCell align="right"><strong>Notes</strong></TableCell>
-                <TableCell align="right"><strong>Date Confirmed</strong></TableCell>
+                <TableCell align="left"><strong>Name</strong></TableCell>
+                <TableCell align="left"><strong>Email</strong></TableCell>
+                <TableCell align="left"><strong>Confirmed</strong></TableCell>
+                <TableCell align="left"><strong>Notes</strong></TableCell>
+                <TableCell align="left"><strong>Date Confirmed</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -95,17 +95,17 @@ export default function TableConfirmed(){
                   <TableCell component="th" scope="row">
                     {guest.id}
                   </TableCell>
-                  <TableCell align="right">{guest.name}</TableCell>
-                  <TableCell align="right">{guest.email}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">{guest.name}</TableCell>
+                  <TableCell align="left">{guest.email || 'N/A'}</TableCell>
+                  <TableCell align="left">
                     {guest.confirmed ? (
                       <Typography color="success.main">Yes</Typography>
                     ) : (
                       <Typography color="error.main">No</Typography>
                     )}
                   </TableCell>
-                  <TableCell align="right">{guest.notes || 'N/A'}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">{guest.notes || 'N/A'}</TableCell>
+                  <TableCell align="left">
                     {guest.rsvpdate instanceof Date
                       ? guest.rsvpdate.toLocaleDateString()
                       : new Date(guest.rsvpdate).toLocaleDateString()}
