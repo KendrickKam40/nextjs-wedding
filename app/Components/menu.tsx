@@ -21,6 +21,7 @@ import Skeleton from '@mui/material/Skeleton';
 export default function MenuBar({...props}){
     const { user, logout } = useAuth();  // Now we use login from AuthContext
     const [isLoading, setIsLoading] = useState(true);
+    const [isMain, setIsMain] = useState(false);
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
 
@@ -50,6 +51,10 @@ export default function MenuBar({...props}){
         if(userData.name){
             setIsLoading(false);
         }
+
+        if(userData.party==="Main"){
+            setIsMain(true);
+        }
     },[userData])
 
     const logoutMenuButton = () => {
@@ -69,7 +74,9 @@ export default function MenuBar({...props}){
         setAnchorEl(null);
     };
 
-    window.onscroll = function(){attachSticky()};
+    const navigateDashboard = () =>{
+        router.push('/dashboard');
+    }
 
     function attachSticky(){
         var navbar = document.querySelector('.menu-section');
@@ -82,6 +89,10 @@ export default function MenuBar({...props}){
             }
         }
     }
+
+    useEffect(()=>{
+        window.onscroll = function(){attachSticky()};
+    },[])
 
     return (
        <>
@@ -131,6 +142,9 @@ export default function MenuBar({...props}){
                 {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem> */}
                 <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
+                {
+                    isMain && <MenuItem onClick={navigateDashboard}>Dashboard</MenuItem>
+                }
             </Menu>
 
             </div>
