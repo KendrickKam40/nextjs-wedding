@@ -8,8 +8,9 @@ import '@/app/styles/dashboard.css';
 import { useState, useEffect } from "react";
 import { getDataByEmail } from "@/app/rsvp/actions";
 import { useRouter } from "next/navigation";
-
-
+import HomeIcon from '@mui/icons-material/Home';
+import { Button } from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
 export default function Dashboard(){
    
     const { user, logout } = useAuth();  // Now we use login from AuthContext
@@ -47,6 +48,14 @@ export default function Dashboard(){
         }
     },[userData])
 
+    const handleHome = () => {
+        router.push('/')
+    }
+
+    const handleAddGuest = () =>{
+        alert('AWW DAMN :( not available yet sorry');
+    }
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between main-container">
           <div className='body-container'>
@@ -54,8 +63,18 @@ export default function Dashboard(){
         <section>
             
             <div className="dashboard-container">
+                <div className="nav">
+                <Button variant="outlined" startIcon={<HomeIcon />} onClick={handleHome}>
+                    Home
+                </Button>
+                <Button variant="outlined" startIcon={<PersonIcon />} onClick={handleAddGuest}>
+                    Add Guests
+                </Button>
+                </div>
                 <div className="confirmed-guests-heading">
-                    <h1 className="typography-card-headline">Confirmed Guests</h1>
+                    <h1 className="typography-card-headline">
+                        Confirmed Guests
+                    </h1>
                     <TotalGuests/>
                 </div>
                 <TableConfirmed/>    

@@ -2,7 +2,21 @@
 
 import { QueryResultRow, sql } from '@vercel/postgres';
 
+export async function getAllData(){
+    try{
+        const {rows , fields} = await sql`SELECT * FROM guests ORDER BY id`;
 
+        if(rows.length > 0){
+            const returnData: QueryResultRow[] = rows;
+            return returnData;
+        }
+
+        return [];
+    }catch(error){
+        console.error(error)
+        return [];
+    }
+}
 
 export async function getDataByConfirmed(confirmed: boolean){
     try{

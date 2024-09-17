@@ -16,3 +16,23 @@
         flex-direction: column;
     }
 }
+
+.nav{
+    margin-bottom: 1em;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 600px) {
+    .nav{
+        text-align: center;
+    }
+}
+
+.table-actions{
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

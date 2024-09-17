@@ -3,7 +3,7 @@
 import '@/app/styles/menu.css'
 import {useEffect, useState } from 'react'
 import { getDataByEmail } from '../actions';
-import { useRouter } from "next/navigation";
+import { useRouter,usePathname } from "next/navigation";
 import { useAuth } from "@/app/AuthContext";
 
 //MUI
@@ -24,6 +24,9 @@ export default function MenuBar({...props}){
     const [isMain, setIsMain] = useState(false);
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
+
+    const isHome = usePathname()==="/"
+    const isDashboard = usePathname()==="/dashboard"
 
 
     useEffect(()=>{
@@ -141,10 +144,15 @@ export default function MenuBar({...props}){
             >
                 {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem> */}
-                <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
+               
                 {
-                    isMain && <MenuItem onClick={navigateDashboard}>Dashboard</MenuItem>
+                    isMain && !isDashboard &&<MenuItem onClick={navigateDashboard}>Dashboard</MenuItem>
                 }
+                {
+                    !isHome &&
+                    <MenuItem onClick={()=>{router.push("/")}}>Home</MenuItem>
+                }
+                 <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
             </Menu>
 
             </div>
