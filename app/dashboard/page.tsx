@@ -18,6 +18,11 @@ export default function Dashboard(){
     const [userData, setUserData] = useState<any>({});
     const router = useRouter();
 
+    useEffect(()=>{
+        if(!user){
+            router.push('/')
+        }
+    })
 
     useEffect(()=>{
         async function getData(){

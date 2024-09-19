@@ -130,38 +130,42 @@ export default function MenuBar({...props}){
                     <Countdown targetDate="2025-07-28"/>
                 </div>
             
-
-            <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? 'long-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-            >
-                <MoreVertIcon htmlColor='rgb(var( --secondary-rgb))'/>
-            </IconButton>
-            <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                'aria-labelledby': 'basic-button',
-                }}
-            >
-                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem> */}
-               
-                {
-                    isMain && !isDashboard &&<MenuItem onClick={navigateDashboard}>Dashboard</MenuItem>
-                }
-                {
-                    !isHome &&
-                    <MenuItem onClick={()=>{router.push("/")}}>Home</MenuItem>
-                }
-                 <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
-            </Menu>
+            {userData.name &&
+                <>
+                    <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? 'long-menu' : undefined}
+                    aria-expanded={open ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                    >
+                        <MoreVertIcon htmlColor='rgb(var( --secondary-rgb))'/>
+                    </IconButton>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My account</MenuItem> */}
+                    
+                        {
+                            isMain && !isDashboard &&<MenuItem onClick={navigateDashboard}>Dashboard</MenuItem>
+                        }
+                        {
+                            !isHome &&
+                            <MenuItem onClick={()=>{router.push("/")}}>Home</MenuItem>
+                        }
+                        <MenuItem onClick={logoutMenuButton}>Logout</MenuItem>
+                    </Menu>
+                </>
+            }
+            
 
             </div>
             </div>

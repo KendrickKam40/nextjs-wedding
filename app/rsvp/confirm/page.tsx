@@ -20,6 +20,11 @@ export default function Page() {
 
     const router = useRouter();
 
+    useEffect(()=>{
+        if(!user){
+            router.push('/rsvp')
+        }
+    })
 
     useEffect(()=>{
         async function getData(){
