@@ -312,7 +312,7 @@ export default function Home() {
 
 
   function handleRSVP(){
-    router.push('/rsvp/confirm');
+    router.push('/rsvp');
   }
 
   return (
@@ -325,8 +325,6 @@ export default function Home() {
                 </div>
               </>
             }
-          {userId && (
-                  <>
                   <MenuBar
                   />
                   <section>
@@ -341,10 +339,8 @@ export default function Home() {
                         <h2 className="typography-section-eyebrow style-script-regular">You are invited!</h2>
                         <h1 className="typography-section-headline style-script-regular">Annissa & Kendrick</h1>
                       </div>
-                      {
-                        userId && 
+                       
                         <button type="submit" className="submitButton alt" onClick={handleRSVP} >RSVP</button>
-                      }
                     
                     </Banner>
                   </section>
@@ -434,9 +430,7 @@ export default function Home() {
                     </div>
                       
                     </div>
-                  </section>
-                  </>
-            )}
+                  </section>            
             </div>
               </main>
           );

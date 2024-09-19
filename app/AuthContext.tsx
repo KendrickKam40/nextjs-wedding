@@ -29,9 +29,10 @@ export const AuthProvider = ({ children } : {children : ReactNode}) => {
     if (token) {
       const decoded = jwtDecode<User>(token);  // Decode token to User type
       setUser(decoded);  // Set user state with decoded token data
-    }else{
-      router.push("/rsvp");
     }
+    // else{
+    //   router.push("/rsvp");
+    // }
   }, []);
 
   const login = async (email: string, name: string) => {
@@ -68,7 +69,8 @@ export const AuthProvider = ({ children } : {children : ReactNode}) => {
   const logout = () => {
     localStorage.removeItem('token');
     setUser(null);
-    router.push('/rsvp');
+    router.push('/');
+    
   };
 
   return (

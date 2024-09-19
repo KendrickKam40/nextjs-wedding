@@ -63,6 +63,7 @@ export default function MenuBar({...props}){
     const logoutMenuButton = () => {
         // Call Magic's logout method, reset the user state, and route to the login page
         logout();
+        location.reload();
     };
 
     // menu methods & vars
@@ -102,21 +103,28 @@ export default function MenuBar({...props}){
         <section className='menu-section'>
             <div className='menu-card'>
                 {
-                    isLoading ? <Skeleton width={100} /> :
-                    <div className='menu-content'>
-                        <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
-                        <div className='status'>
+                    !userData.name ? <div className='menu-content'>
+                        <p className='typography-family-paragraph'>Welcome!</p></div>
+                        : <>
                             {
-                                userData?.confirmed &&
-                                <Chip label="CONFIRMED" icon={<CelebrationIcon />} color="success"/>
+                                isLoading  ? <Skeleton width={100}/> :
+                                <div className='menu-content'>
+                                    <p className='typography-family-paragraph'>Welcome, {userData.name}</p>
+                                    <div className='status'>
+                                        {
+                                            userData?.confirmed &&
+                                            <Chip label="CONFIRMED" icon={<CelebrationIcon />} color="success"/>
+                                        }
+                                        {
+                                            !userData?.confirmed &&
+                                            <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
+                                        }
+                                    </div>
+                                </div>
                             }
-                            {
-                                !userData?.confirmed &&
-                                <Chip label="UNCONFIRMED" icon={<SentimentVeryDissatisfiedIcon />} color="warning"/>
-                            }
-                        </div>
-                    </div>
+                        </>
                 }
+                
             <div className='menu-actions'>
                 <div className='countdown-timer'>
                     <Countdown targetDate="2025-07-28"/>
