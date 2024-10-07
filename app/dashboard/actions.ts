@@ -4,7 +4,7 @@ import { QueryResultRow, sql } from '@vercel/postgres';
 
 export async function getAllData(){
     try{
-        const {rows , fields} = await sql`SELECT * FROM guests ORDER BY party, id `;
+        const {rows , fields} = await sql`SELECT * FROM guests ORDER BY rsvpdate DESC, party, id `;
 
         if(rows.length > 0){
             const returnData: QueryResultRow[] = rows;
@@ -20,7 +20,7 @@ export async function getAllData(){
 
 export async function getDataByConfirmed(confirmed: boolean){
     try{
-        const {rows , fields} = await sql`SELECT * FROM guests WHERE confirmed=${confirmed} ORDER BY party, id`;
+        const {rows , fields} = await sql`SELECT * FROM guests WHERE confirmed=${confirmed} ORDER BY rsvpdate DESC, party, id`;
 
         if(rows.length > 0){
             const returnData: QueryResultRow[] = rows;

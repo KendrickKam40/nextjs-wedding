@@ -157,7 +157,7 @@ export default function TableConfirmed(){
                 <TableCell align="left"><strong>Email</strong></TableCell>
                 <TableCell align="left"><strong>Confirmed</strong></TableCell>
                 <TableCell align="left"><strong>Notes</strong></TableCell>
-                <TableCell align="left"><strong>Date Confirmed</strong></TableCell>
+                <TableCell align="left"><strong>Last Updated</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -182,7 +182,7 @@ export default function TableConfirmed(){
                   <TableCell align="left">
                     {guest.rsvpdate instanceof Date
                       ? guest.rsvpdate.toLocaleDateString()
-                      : 'N/A'}
+                      : 'Unconfirmed'}
                   </TableCell>
                 </TableRow>
               ))}

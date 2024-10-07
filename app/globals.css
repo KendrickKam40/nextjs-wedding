@@ -173,21 +173,19 @@ section{
   color: #FFF;
   width: fit-content;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 980px;
 }
 
 .submitButton.alt{
   color: rgb(var(--secondary-rgb));
   background-color: white;
-  border: 2px solid rgb(var--secondary-rgb);
-  font-weight: 700;
+  border: 2px solid white;
   transition: all 0.5s cubic-bezier(0,0,0.5,1);
 }
 
 .submitButton.alt:hover{
   color: white;
   background-color: rgb(var(--secondary-rgb));
-  font-weight: 700;
 }
 
 /* back button */
@@ -255,4 +253,23 @@ iframe{
 .temp-container p.subtext {
   font-weight: 200;
   margin: 0;
+}
+
+.announcement-container {
+  display: flex;
+  gap: 5px;
+  bottom: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  .announcement-container {
+    gap: 0px
+  }
+
+  .announcement-icon{
+    display: none;
+  }
 }

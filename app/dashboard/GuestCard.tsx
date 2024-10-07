@@ -38,10 +38,10 @@ const GuestCard: React.FC<GuestCardProps> = ({ guest }) => {
           )}
           <Grid item xs={12}>
             <Typography variant="body1">
-              <strong>Date Confirmed:</strong>{' '}
+              <strong>Last Updated:</strong>{' '}
               {guest.rsvpdate instanceof Date
                 ? guest.rsvpdate.toLocaleDateString()
-                : new Date(guest.rsvpdate).toLocaleDateString()}
+                : 'Unconfirmed'}
             </Typography>
           </Grid>
         </Grid>

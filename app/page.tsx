@@ -12,6 +12,7 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import HotelIcon from '@mui/icons-material/Hotel';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import CampaignIcon from '@mui/icons-material/Campaign';
 
 // Custom Components
 import Banner from "./Components/banner";
@@ -20,6 +21,7 @@ import MenuBar from "./Components/menu";
 import { getDataByEmail } from "./actions";
 import LoadingSpinner from "./Components/loader";
 import Countdown from "./Components/countDown";
+import Announcement from "./Components/announcement";
 
 const groupTravelOptions = [
   {
@@ -316,6 +318,7 @@ export default function Home() {
   }
 
   return (
+     
           <main className="flex min-h-screen flex-col items-center justify-between main-container">
           <div className='body-container'>
             {
@@ -335,13 +338,22 @@ export default function Home() {
                   <section className="banner-section">
                     <Banner
                     backgroundImage="/bannerImage.jpg">
-                      <div className="banner-content-text"> 
-                        <h2 className="typography-section-eyebrow style-script-regular">You are invited!</h2>
-                        <h1 className="typography-section-headline style-script-regular">Annissa & Kendrick</h1>
-                      </div>
+                        <div className="banner-content-text"> 
+                          <h2 className="typography-section-eyebrow style-script-regular">You are invited!</h2>
+                          <h1 className="typography-section-headline style-script-regular">Annissa & Kendrick</h1>
+                        </div>
                        
-                        <button type="submit" className="submitButton alt" onClick={handleRSVP} >RSVP</button>
-                    
+                        <button type="submit" className="submitButton alt" onClick={handleRSVP} >
+                          <p className="button-title">RSVP</p>
+                        </button>
+                        
+                        <div className="announcement-container">
+                          <CampaignIcon className="announcement-icon"/>
+                          <p>
+                            Confirm by 31/12/2024
+                          </p>
+
+                        </div>
                     </Banner>
                   </section>
                   

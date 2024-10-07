@@ -19,10 +19,11 @@ export default function Dashboard(){
     const router = useRouter();
 
     useEffect(()=>{
-        if(!user){
+        if(!user && !isLoading){
             router.push('/')
+            console.log(":(")
         }
-    })
+    },[])
 
     useEffect(()=>{
         async function getData(){
